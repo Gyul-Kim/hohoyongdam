@@ -169,6 +169,7 @@ switch(path) {
 			
 		});
 
+		// commmit test 중
 		for(var i = 0; i < img[2].length; i++) {
 			$("#rooms .rooms_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
@@ -176,6 +177,8 @@ switch(path) {
 				'</div>'
 			);
 		} Swipers(".rooms_visual", "auto", true, 0, false);
+
+		// rooms video img
 
 		// rooms video img
 
@@ -191,6 +194,7 @@ switch(path) {
 			);
 		} Swipers2(".rooms_menu_swiper", "auto", true, 100, false);
 
+		
 		break;
 
 
