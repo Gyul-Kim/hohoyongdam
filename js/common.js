@@ -15,6 +15,28 @@ $(function(){
     let detailPath = ((location.href.substr(location.href.lastIndexOf("=") + 1)).slice(0, 2) - 1 + 1) - 1; //detail Path
 
 // header
+$("header .header_sub div").hover(function(){
+	var ght = $(".header_sub div ul li").height() + 1;
+	$(this).addClass("active");
+	$(this).find("ul li").each(function(e){
+		$(this).parent("ul").css({
+			"transition":" 0.3s ease-in-out",
+			"height":ght * (e + 1),
+			"opacity":"1","z-index":"1",
+			"transition":"0.5s"
+		});	
+	});
+},function(){
+	$(this).removeClass("active");
+	$("header .header_sub ul").css({
+		"height":0,
+		"opacity":"0",
+		"z-index":"0",
+		"transition":"0.5s"
+	});
+});
+
+
 // top 버튼
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
@@ -60,14 +82,27 @@ switch(path) {
 		}
 
 		// accommodation
-		for(var i = 0; i < img[2].length; i++) {
-			$("#index .idx_acc .swiper-image").append(
-				'<div class="swiper-slide">' + 
-					'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%"></div>' + 	
-				'</div>'
-			);
-		} Swipers(".idx_acc", "auto", true, 100, false);
+		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8', 
+			function(data){
+				for(var i = 0; i < data.result.length; i++) {
+					$("#index .idx_acc .swiper-image").append(
+						'<div class="swiper-slide">' + 
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+						'</div>'
+					);
 
+					// $(".idx_rooms_img .title").append(
+					// 	'<p><span>' + data.result[i]["ROOM_TYPE"]  + '</span></p>' +
+					// 	'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a>'
+					// );
+
+					$("#index .idx_rooms_preview .swiper-image").append(
+						'<div class="swiper-slide">' + 
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/2.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+						'</div>'
+					);
+				} Swipers(".idx_rooms", "auto", true, 100, false);
+		});
 
 		// ability 
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/9',
@@ -83,12 +118,12 @@ switch(path) {
 				$("#index .idx_special .spec_swiper .swiper-image").append(
 					'<div class="swiper-slide">' + 
 						'<a href="special.html?num=' + numbering(i) + '">' +
-							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 45% 50%"></div>' + 	
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 							'<h5 class="special_title"><strong>' + specialList[i]["TITLE_EN"]  +' </strong><span>' + specialList[i]["CONTENT"]  + '</span></h5>' +
 						'</a>' +
 					'</div>'
 				);
-			} Swipers2(".idx_special", "auto", true, 100, false);
+			} Swipers2(".idx_special", "auto", false, 100, false);
 
 		});
 		break;
@@ -153,23 +188,41 @@ switch(path) {
 			var ETC_DETL = data.result[arr4[detailPath]]["ETC_DETL"];				//객실상세
 			var INTERIOR = data.result[arr4[detailPath]]["INTERIOR"].split(',');	//객실비품
 
+			$(".rooms_visual .rooms_visual_title").append('<h3>' + data.result[arr4[detailPath]]["TYPE_NAME"] + '</h3>');
+
 			$(".rooms_info").append(
-				'<h3>' + data.result[arr4[detailPath]]["TYPE_NAME"] + '</h3>' +
+				// '<h3>' + data.result[arr4[detailPath]]["TYPE_NAME"] + '</h3>' +
 				'<ul>' +
-					'<li><span class="tl">Roomtype</span><span class="tx">'+ data.result[arr4[detailPath]]["TYPE_NAME"] +'</span></li>' +
-					'<li><span class="tl">Criteria</span><span class="tx">기준 '+ data.result[arr4[detailPath]]["TYPE_NAME"] +'명 ~ 최대 '+ data.result[arr4[detailPath]]["TYPE_NAME"] +'명</span></li>' +
-					'<li><span class="tl">Overstaffed</span><span class="tx">기준인원 초과시 추가요금 발생</span></li>' +
-					'<li><span class="tl">Time</span><span class="tx checkInOut">체크인 15:00 / 체크아웃 11:00</span></li>' +
-					'<li><span class="tl">Supplies</span><ul class="eq"></ul></li>' +
+					'<h3>Information</h3>' +
+					'<li><span class="tl">ㆍ객실구조</span><span class="tx">'+ data.result[arr4[detailPath]]["TYPE_NAME"] +'</span></li>' +
+					'<li><span class="tl">ㆍ인원</span><span class="tx">기준 '+ data.result[arr4[detailPath]]["ADLT_BASE_PERS"] +'명 ~ 최대 '+ data.result[arr4[detailPath]]["ADLT_MAX_PERS"] +'명</span></li>' +
+					'<li><span class="tl">ㆍ초과금액</span><span class="tx">기준인원 초과시 추가요금 발생</span></li>' +
+					'<li><span class="tl">ㆍ입실/퇴실</span><span class="tx checkInOut">체크인 15:00 / 체크아웃 11:00</span></li>' +
+					
 					// '<li class="etc"><span class="tl">특이사항</span><span class="tx">'+ ETC_DETL +'</span></li>' +
-				'</ul>'	+
-				'<a href="reserve.html?reserve=rv" class="rsv_btn">실시간 예약하기</a>'
+				'</ul>' + 
+				'<ul><li><ul class="eq">' +
+					'<li>ㆍFUll HD TV</li>' +
+					'<li>ㆍ카누 커피</li>' +
+					'<li>ㆍ커피포트</li>' +
+					'<li>ㆍ와인잔</li>' +
+				'</ul></li></ul>' +
+				'<ul>' +
+					'<h3>확인사항</h3>' +
+					'<li>ㆍ모든 객실은 금연이며 화재의 위험이 있는 양초류의 사용은 불가합니다.</li>' +
+					'<li>ㆍ객실 구조 및 인테리어는 객실 위치에 따라 이미지와 다를 수 있습니다.</li>' +
+					'<li>ㆍ풀빌라내 반려동물 동반 입장은 불가합니다.</li>' +
+					'<li>ㆍ모든 요금에 세금 10% 및 봉사료 10% (합계 20%)가 부과됩니다</li>' +
+				'</ul>' 
+				
 			);
 
-			
+			// equipment
+			// for(var e = 0; e < INTERIOR.length; e++) $(".eq").append('<li>' + INTERIOR[e] + ',</li>');	
+			// var last = $(".eq li").eq(INTERIOR.length - 1).text().replace(/,/g, '');
+			// $(".eq li").eq(INTERIOR.length - 1).text(last);
 		});
 
-		// commmit test 중
 		for(var i = 0; i < img[2].length; i++) {
 			$("#rooms .rooms_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
@@ -178,30 +231,87 @@ switch(path) {
 			);
 		} Swipers(".rooms_visual", "auto", true, 0, false);
 
-		// rooms video img
-
-		// rooms video img
-
-
-
-
 		// accommodation menu
-		for(var i = 0; i < img[2].length; i++) {
-			$("#rooms .rooms_menu_swiper .swiper-image").append(
-				'<div class="swiper-slide">' + 
-					'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%"></div>' + 	
-				'</div>'
-			);
-		} Swipers2(".rooms_menu_swiper", "auto", true, 100, false);
+		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8', 
+			function(data){
+				for(var i = 0; i < data.result.length; i++) {
+					$("#rooms .rooms_menu_swiper .swiper-image").append(
+						'<div class="swiper-slide">' + 
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+						'</div>'
+					);
 
-		
+					// $(".idx_rooms_img .title").append(
+					// 	'<p><span>' + data.result[i]["ROOM_TYPE"]  + '</span></p>' +
+					// 	'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a>'
+					// );
+
+					$("#rooms .rooms_menu_preview .swiper-image").append(
+						'<div class="swiper-slide">' + 
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/2.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+						'</div>'
+					);
+				} Swipers3(".rooms_menu_img", "auto", true, 100, false);
+			});
+
 		break;
 
 
 	case 'special' :
-        $("body").addClass("special_" + numbering(detailPath));
+		videoControl(video);
+		$.getJSON('https://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/9', 
+		function(data){
+			const specialObj = new Array();
+			for (let i = 0; i < data.result.length; i++) {
+				for (var j = 0; j < data.result.length; j++) {
+					if (Number(data.result[j]["ORDER_NUM"]) - 1 === i) {
+						specialObj.push(data.result[j]);
+					}
+				}
+			}
+				
+			for(let i = 0; i < specialObj.length; i++) {
+				if(i%2 == 0) {
+					$("#special .contents").append(
+						`<div class="Swiper special${i + 1} lt" id="special0${i + 1}">` +
+							'<div class="swiper-view">' +
+								'<div class="swiper-container swiper">' +
+									'<div class="swiper-wrapper swiper-image"></div>' +
+									'<div class="swiper-button-prev swiper-btn xi-angle-left-thin"></div>' +
+									'<div class="swiper-button-next swiper-btn xi-angle-right-thin"></div>' +
+									'<div class="swiper-pagination"></div>' +
+								'</div>' +
+								`<div class="txt"><span>${specialObj[i]["TITLE_KR"]}</span><strong>${specialObj[i]["TITLE_EN"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
+							'</div>' +
+						'</div>'
+					);
+				} else {
+					$("#special .contents").append(
+						`<div class="Swiper special${i + 1} rt" id="special0${i + 1}">` +
+							'<div class="swiper-view">' +
+								'<div class="swiper-container swiper">' +
+									'<div class="swiper-wrapper swiper-image"></div>' +
+									'<div class="swiper-button-prev swiper-btn xi-angle-left-thin"></div>' +
+									'<div class="swiper-button-next swiper-btn xi-angle-right-thin"></div>' +
+									'<div class="swiper-pagination"></div>' +
+								'</div>' +
+								`<div class="txt"><span>${specialObj[i]["TITLE_KR"]}</span><strong>${specialObj[i]["TITLE_EN"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
+							'</div>' +
+						'</div>'
+					);
+				}
+				for(let j = 0; j < img[3][i]; j++) {
+					$("#special .Swiper").eq(i).find(".swiper-image").append(
+						'<div class="swiper-slide">' +
+							`<div style="background-image:url(${url}/room/${i+1}/${j+1}.jpg)"></div>` +
+						'</div>'
+					);
+				} Swipers(`#special .special${i + 1}`, "auto", true, 0, true);
+			}
 
-		
+			
+
+		});			
 		break;
 
 	case 'notice':
@@ -265,34 +375,37 @@ $.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/4',	//User 
 		const BUSI_PRE_NM = data.result.BUSI_PRE_NM;			// 대표자
 
 		$("footer").append(
-			'<div class="footerWrap">' +
 				'<div class="ft_top">' +
-					'<div class="ft_txt">HOHO YONGDAM</div>' +
-					'<ul class="ft_menu">' +
-						'<li><a href="about.html">HOHO YONGDAM</a></li>' +
-						'<li><a href="rooms.html?num=01">ACCOMMODATION</a></li>' +
-						'<li><a href="special.html?numb=01">ABILITY</a></li>' +
-						'<li><a href="reserve.html?reserve=rv">RESERVATION</a></li>' +
-					'</ul>' +
-					'<div class="ft_sns">' +
-						'<div class="sns_01"><a href="https://www.instagram.com/haegeurami_/" target="_blank"><img src="images/sns_01.png" alt="인스타그램" width="30" height="auto"></a></div>' +
-						'<div class="sns_02"><a href="#"><img src="images/sns_02.png" alt="블로그" width="30" height="auto"></a></div>' +
-						'<div class="sns_02"><a href="#"><img src="images/sns_03.png" alt="페이스북" width="30" height="auto"></a></div>' +
+					'<div class="footerWrap">' +
+						'<div class="ft_txt">HOHO YONGDAM</div>' +
+						'<ul class="ft_menu">' +
+							'<li><a href="about.html">HOHO YONGDAM</a></li>' +
+							'<li><a href="rooms.html?num=01">ACCOMMODATION</a></li>' +
+							'<li><a href="special.html?numb=01">ABILITY</a></li>' +
+							'<li><a href="reserve.html?reserve=rv">RESERVATION</a></li>' +
+						'</ul>' +
+						'<div class="ft_sns">' +
+							'<div class="sns_01"><a href="https://www.instagram.com/haegeurami_/" target="_blank"><img src="images/sns_01.png" alt="인스타그램" width="30" height="auto"></a></div>' +
+							'<div class="sns_02"><a href="#"><img src="images/sns_02.png" alt="블로그" width="30" height="auto"></a></div>' +
+							'<div class="sns_02"><a href="#"><img src="images/sns_03.png" alt="페이스북" width="30" height="auto"></a></div>' +
+						'</div>' +
 					'</div>' +
 				'</div>' +
 				'<div class="ft_bottom">' +
-					'<div class="ft_logo"><a href="index.html"><img src="images/ft_logo.png" width="100%" height="auto"></a></div>' +
-					'<div class="ft_info">' +
-						'<ul class="ft_info_menu">' +
-							'<li><b>상호명 : </b>&nbsp;' + BUSI_NM + '</li>' +
-							'<li><b>Tel : </b>&nbsp;' + USER_TEL1 + '</li>' +
-							'<li><b>사업자 등록번호 : </b>&nbsp;' + BUSI_NO + '</li>' +
-						'</ul>' +
-						'<ul class="ft_info_menu">' +
-							'<li><b>대표자 : </b>&nbsp;' + BUSI_PRE_NM + '</li>' +
-							'<li><b>Address : </b>&nbsp;' + USER_ADDR + '</li>' +
-							'<li><b>통신판매업 신고번호 : </b>&nbsp;' + COMM_SALE_NO + '</li>' +
-						'</ul>' +
+					'<div class="footerWrap">' +
+						'<div class="ft_logo"><a href="index.html"><img src="images/ft_logo.png" width="100%" height="auto"></a></div>' +
+						'<div class="ft_info">' +
+							'<ul class="ft_info_menu">' +
+								'<li><b>상호명 : </b>&nbsp;' + BUSI_NM + '</li>' +
+								'<li><b>Tel : </b>&nbsp;' + USER_TEL1 + '</li>' +
+								'<li><b>사업자 등록번호 : </b>&nbsp;' + BUSI_NO + '</li>' +
+							'</ul>' +
+							'<ul class="ft_info_menu">' +
+								'<li><b>대표자 : </b>&nbsp;' + BUSI_PRE_NM + '</li>' +
+								'<li><b>Address : </b>&nbsp;' + USER_ADDR + '</li>' +
+								'<li><b>통신판매업 신고번호 : </b>&nbsp;' + COMM_SALE_NO + '</li>' +
+							'</ul>' +
+						'</div>' +
 					'</div>' +
 				'</div>' +
 				'<em class="copyright">홈페이지 제작 ㅣ GONYLAB</em>' +
@@ -333,13 +446,27 @@ function Swipers(value, view, center, Between, boolean){
 	});
 }
 
+//function - swipers
+function Swipers3(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + ' .swiper3', {
+		paginationClickable: true,
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		pagination: '.swiper-pagination',
+		slidesPerView: view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: boolean
+	});
+}
+
 function Swipers2(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + ' .swiper2', {
 		paginationClickable: true,
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
 		pagination: '.swiper-pagination',
-		slidesPerView: view,
+		slidesPerView: 3.5,
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean

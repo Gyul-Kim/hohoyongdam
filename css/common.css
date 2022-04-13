@@ -14,18 +14,36 @@ section,.section {position:relative; width:100%;}
 .header .header_logo {position:absolute; top:20px; left:50px; width:332px; height:119px; transform-style:preserve-3d; overflow: hidden; white-space:nowrap; z-index:10;}
 .header .header_logo a {display: block;; width:100%; height:100%; background:url(../images/logo.png) no-repeat 50% 50%; background-size:cover; }
 
-.header .header_sub {position:absolute; top:70px; right:170px; display:flex; width:30%; z-index:10;}
-.header .header_sub > a {display:block; flex:1; text-align:center;}
-.header .header_sub > a.header_sub__modelhouse, a.header_sub__catalog {flex:1.5;}
-.header .header_toggle {position:absolute; top:50px; right:50px; background-color:#111; width:50px; height:50px;}
+.header .header_sub {position:absolute; top:70px; right:0; display:flex; width:40%; z-index:10;  z-index:100;}
+.header .header_sub div {flex:1; margin-right:9px; height:40px;}
+.header .header_sub div a {display:block; text-align:center; font-size:16px; padding:11px 0; text-shadow: 2px 2px 2px rgb(0 0 0 / 15%);}
+.header .header_sub div.active {background-color:#e6e3db; border-top:1px solid #c8c1b0;}
+.header .header_sub div ul li a {display:block; font-size:14px; padding:10px 0; margin-top:5px; background-color:#e6e3db; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
+.header .header_sub div ul li a:hover {background-color:#c8c1b0;}
+.header .header_sub div ul li a:hover span.kr {display:block;}
+.header .header_sub div ul li a:hover span.en {display:none;}
+
+.header .header_sub div.header_sub_modelhouse, .header .header_sub div.header_sub_catalog {flex:1.5;}
+.header .header_sub div.header_sub_reserve {flex:1.25;}
+
+.header .header_sub ul {opacity:0; z-index:0;}
+.header .header_sub ul li span.kr {display:none;}
+.header .header_sub ul li:first-child {margin-top:7px;}
+
+body:not(#index) .header .header_logo a { background:url(../images/logo_abt.png) no-repeat 50% 50%; background-size:cover;}
+body:not(#index) .header .header_logo {top:10px;}
+body:not(#index) .header .header_sub {top:50px;}
+
 
 /* footer */
 footer {background-color:#262729; color:#fff;}
-footer .footerWrap {width:100%; position:relative; max-width:1500px; margin:0 auto;}
-footer .ft_top {height:120px; display:flex; border-bottom:1px solid #e2e2e2;}
-footer .ft_bottom {height:240px; display:flex;}
+footer .ft_top {height:120px; border-bottom:1px solid #e2e2e2; width:100%; position:relative;}
+footer .ft_top .footerWrap, footer .ft_bottom .footerWrap  {display:flex;}
+footer .ft_top .footerWrap {max-width:1500px; margin:0 auto;}
+footer .ft_bottom {height:240px; width:100%; position:relative;}
+footer .ft_bottom .footerWrap {max-width:1500px; margin:0 auto;}
 
-footer .ft_txt {flex:1; font-size:30px; text-align:left; padding:46px 0;}
+footer .ft_txt {flex:1; font-size:30px; text-align:left; padding:46px 0; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 footer .ft_menu {flex:2; display:flex;}
 footer .ft_menu li {flex:1;}
 footer .ft_menu li a {display:block; color:#fff; font-size:18px; padding:51px 0;}
@@ -88,7 +106,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 
 #index .idx_main_txt {position:absolute; width:430px; height:70px; top:200px; right:300px; overflow:hidden; z-index:15;}
 #index .idx_main_txt span {display: block; font-size:18px; margin-bottom:15px;}
-#index .idx_main_txt strong {display: block; font-size:35px;}
+#index .idx_main_txt strong {display: block; font-size:35px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 
 #index .idx_rooms {margin-top:180px; height:800px; padding:100px 0; position: relative;}
 #index .idx_rooms::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
@@ -96,43 +114,47 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_rooms .idx_accommodation {display:flex; width:100%; height:auto;}
 #index .idx_rooms .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px);}
 #index .idx_rooms .title span, .idx_rooms .title strong, .idx_rooms .title strong, .idx_rooms .title p {display:block;}
-#index .idx_rooms .title strong {font-size:30px; margin-bottom:20px;}
+#index .idx_rooms .title strong {font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #index .idx_rooms .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
 
-#index .idx_rooms .title p {font-size:18px; color:#222; line-height:1.75;}
+#index .idx_rooms .title p {font-size:15px; color:#222; line-height:1.75;}
 #index .idx_rooms .title p > span:first-child {margin-bottom:30px;}
 #index .idx_rooms .title a {display:block; font-size:16.5px; margin-top:70px;}
 
-#index .idx_rooms .Swipers {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
-#index .idx_rooms .Swipers .swiper-view {height:80vh;}
+#index .idx_rooms .idx_acc {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
+#index .idx_rooms .idx_acc .swiper-view {height:80vh;}
 
-#index .idx_rooms .idx_preview {left:-120px; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:calc(100% + 40px);}
+#index .idx_rooms_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:400px;}
+#index .idx_rooms_preview .swiper-view {height:300px!important;}
 
-#index .idx_special {position: relative; width:100%; height:auto; margin:200px 0 0 auto;}
+
+#index .idx_special {position: relative; width:85%; height:auto; margin:200px 0 0 auto;}
 #index .idx_special h3 {width:150px; height:auto; position:absolute; top:0; left:0; z-index:10;}
-#index .idx_special h3 strong {display:block; font-size:30px; margin-bottom:20px;}
+#index .idx_special h3 strong {display:block; font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #index .idx_special h3 span {display:block; font-size:15px; color:#8b8b8b;}
 #index .idx_special .Swipers {position:relative; width:100%; height:auto;}
-#index .idx_special .Swipers .swiper-view {position:relative; width:100%; height:auto; overflow:hidden;}
+#index .idx_special .Swipers .swiper-view {position:relative; width:100%; height:auto; overflow:hidden; margin-top:100px;}
 #index .idx_special .Swipers .swiper-view .swiper-wrapper {width:80%;}
-#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide {width:calc(33.333% + 7px);}
+#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide {width:calc(29% + 7px);}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a {display:block;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a div {width:100%; height:600px;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 strong {display:block; font-size:20px; color:#000; margin:10px 0 20px;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 span {display:block; font-size:15px; color:#333;}
+
+#index .idx_special .Swipers .swiper-button-next {right:245px;}
 
 #index .idx_vid {position:relative; display:flex; margin-top:200px; padding:100px 0;}
 #index .idx_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
 #index .idx_vid .vid_left .vid_mov {display:flex; position:relative; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
 #index .idx_vid .vid_left .vid_mov iframe {display:block; width:100%; height:600px;}
 #index .idx_vid .vid_left .vid_mov h3 {display:block; margin-top:20px; text-align:center;}
-#index .idx_vid .vid_left .vid_mov h3 strong {display:inline-block; font-size:23px;}
+#index .idx_vid .vid_left .vid_mov h3 strong {display:inline-block; font-size:23px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #index .idx_vid .vid_left .vid_mov h3 span {display:inline-block; margin-left:20px; font-size:15px;}
 
 #index .idx_vid .vid_right {flex:1;}
 #index .idx_vid .vid_right .vid_txt {padding:50px 0 60px 40px;}
 #index .idx_vid .vid_right span, .idx_vid .vid_right strong, .idx_vid .vid_right p, .idx_vid .vid_right p span {display:block;}
-#index .idx_vid .vid_right .vid_txt h3 strong {font-size:30px; margin-bottom:20px;}
+#index .idx_vid .vid_right .vid_txt h3 strong {font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #index .idx_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
 #index .idx_vid .vid_right .vid_txt p {font-size:15px; color:#111; line-height:1.75;}
 #index .idx_vid .vid_right .vid_txt p span:first-child {margin-bottom:30px;}
@@ -140,8 +162,10 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 
 /* about */
 #about .abt_visual {position: relative; width:100%; height:100%; overflow:hidden; z-index:5;}
-#about .abt_visual .Swipers {width:100%; position:relative; overflow:hidden;}
+#about .abt_visual .Swipers {width:87%; position:relative; overflow:hidden; margin-top:150px}
 #about .abt_visual .Swipers .swiper-view {height:90vh;}
+#about .about_visual_title {position:absolute; top:0; right:8.5%; margin-top:150px;}
+#about .about_visual_title h3 {display:block; font-size:45px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 
 #about .abt_vid {position:relative; display:flex; padding:100px 0;}
 #about .abt_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
@@ -150,28 +174,38 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #about .abt_vid .vid_right {flex:1;}
 #about .abt_vid .vid_right .vid_txt {padding:50px 0 60px 40px;}
 #about .abt_vid .vid_right span, .idx_vid .vid_right strong, .idx_vid .vid_right p, .idx_vid .vid_right p span {display:block;}
-#about .abt_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px;}
+#about .abt_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #about .abt_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
 #about .abt_vid .vid_right .vid_txt p {font-size:15px; color:#111; line-height:1.75;}
 #about .abt_vid .vid_right .vid_txt p span:first-child {margin-bottom:30px;}
 #about .abt_vid .vid_right .vid_img {display:block; width:550px; height:366px;}
 
-#about .abt_map {width:100%; height:100%; overflow:hidden; z-index:1; position: relative; padding:150px 0;}
+#about .abt_map {width:100%; height:100%; overflow:hidden; z-index:1; position: relative; padding:100px 0;}
 #about .abt_map .abt_address {width:50%; height:600px; position:relative; background-color:#f3f2e6;}
 #about .abt_map .abt_address h3 strong, .abt_address h3 span {display:block;}
 #about .abt_map .abt_address h3 {position:absolute; width:500px; top:20%; left:50%; transform:translateX(-50%);}
-#about .abt_map .abt_address h3 strong {font-size:30px; margin-bottom:50px;}
+#about .abt_map .abt_address h3 strong {font-size:30px; margin-bottom:50px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #about .abt_map .abt_address h3 span {font-size:16px; margin-bottom:25px;}
 #about .abt_map .abt_address h3 span b {display:inline-block; font-weight:bold; margin-right:10px;}
-#about .abt_map .abt_screen  {width:100%; max-width:1000px; margin:0 auto; margin-top:-300px;}
+#about .abt_map .abt_screen  {width:100%; max-width:1200px; margin:0 auto; margin-top:-300px;}
 
 /* rooms */
 #rooms {position:relative; width:100%; height:100%; }
 #rooms .rooms_visual {position: relative; width:100%; height:100%; overflow:hidden; z-index:5;}
-#rooms .rooms_visual .Swipers {width:100%; position:relative; overflow:hidden;}
+#rooms .rooms_visual .Swipers {width:87%; position:relative; overflow:hidden; margin-top:150px;}
 #rooms .rooms_visual .Swipers .swiper-view {height:90vh;}
+#rooms .rooms_visual_title {position:absolute; top:0; right:8.5%; margin-top:150px;}
+#rooms .rooms_visual_title h3 {display:block; font-size:60px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 
-#rooms .rooms_vid {position:relative; display:flex; padding:100px 0;}
+#rooms .info_bg {position:absolute; width:100%; height:1000px; top:12%; right:0; background-color:#f2f1e5;}
+#rooms .rooms_info {position:relative; width:70%; height:400px; top:70px; left:10%; margin-bottom:70px;}
+#rooms .rooms_info h3 {display:block; font-size:30px; margin-bottom:35px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
+#rooms .rooms_info > ul {float:left; margin-right:45px;}
+#rooms .rooms_info > ul:nth-child(2) {margin-top:70px; margin-right:150px;}
+#rooms .rooms_info > ul li {line-height:2.25; font-size: 16px;}
+#rooms .rooms_info > ul li .tl {display:inline-block; margin-right:10px; font-weight:bold; font-size:17px; text-align:left; width:100px;}
+
+#rooms .rooms_vid {position:relative; display:flex; padding:120px 0;}
 #rooms .rooms_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
 #rooms .rooms_vid .vid_left .vid_mov {display:flex; position:relative; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
 #rooms .rooms_vid .vid_left .vid_mov iframe {display:block; width:100%; height:600px;}
@@ -179,22 +213,55 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_vid .vid_right .vid_txt {padding:50px 0 60px 40px;}
 #rooms .rooms_vid .vid_right span, .idx_vid .vid_right strong, .idx_vid .vid_right p, .idx_vid .vid_right p span {display:block;}
 #rooms .rooms_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px;}
-#rooms .rooms_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
+#rooms .rooms_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #rooms .rooms_vid .vid_right .vid_txt p {font-size:15px; color:#111; line-height:1.75;}
 #rooms .rooms_vid .vid_right .vid_txt p span:first-child {margin-bottom:30px;}
 #rooms .rooms_vid .vid_right .vid_img {display:block; width:550px; height:366px;}
 
-#rooms .rooms_menu {margin-top:180px; height:800px; padding:100px 0; position: relative;}
+#rooms .rooms_menu {margin:70px 0 180px; height:800px; padding:100px 0; position: relative;}
 #rooms .rooms_menu::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
-#rooms .rooms_menu .idx_rooms_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
-#rooms .rooms_menu .idx_accommodation {display:flex; width:100%; height:auto;}
+#rooms .rooms_menu .rooms_menu_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
 #rooms .rooms_menu .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px);}
-#rooms .rooms_menu .title span, .idx_rooms .title strong, .idx_rooms .title strong, .idx_rooms .title p {display:block;}
-#rooms .rooms_menu .title strong {font-size:30px; margin-bottom:20px;}
+#rooms .rooms_menu .title span, .rooms_menu .title strong, .rooms_menu  .title p {display:block;}
+#rooms .rooms_menu .title strong {font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #rooms .rooms_menu .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
-#rooms .rooms_menu .title p {font-size:18px; color:#222; line-height:1.75;}
+#rooms .rooms_menu .title p {font-size:15px; color:#222; line-height:1.75;}
 #rooms .rooms_menu .title p > span:first-child {margin-bottom:30px;}
 #rooms .rooms_menu .title a {display:block; font-size:16.5px; margin-top:70px;}
-#rooms .rooms_menu .Swipers {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
-#rooms .rooms_menu .Swipers .swiper-view {height:80vh;}
-#rooms .rooms_menu .rooms_preview {left:-120px; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:calc(100% + 40px);}
+#rooms .rooms_menu .rooms_menu_swiper {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
+#rooms .rooms_menu .rooms_menu_swiper .swiper-view {height:80vh;}
+#rooms .rooms_menu_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:400px;}
+#rooms .rooms_menu_preview .swiper-view {height:300px!important;}
+
+/* special */
+#special .sp_visual {position: relative; width:100%; height:100%; overflow:hidden; z-index:5;}
+#special .sp_visual .wrap {float: right;; width:87%; height:90vh; position:relative; margin-top:150px;}
+#special .sp_visual .vid_mov {position:absolute; width:100%; height:100%;}
+#special .sp_visual .vid_mov iframe {width:100%; height:100%;}
+
+#special .sp_visual_title {position:absolute; top:0; left:8.5%; margin-top:150px;}
+#special .sp_visual_title h3 {display:block; font-size:45px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
+#special .sp_bg {position:absolute; width:100%; height:800px; margin-top:150px; top:12%; left:0; background-color:#f2f1e5;}
+
+#special .contents {position:relative; width:100%; height:100%; overflow:hidden; z-index:1; margin:100px 0;}
+#special .contents .Swiper {width:100%; height:800px; margin-top: 100px; position: relative; }	
+#special .contents .Swiper .swiper-view { width: 100%; max-width:1200px; height:760px; } 
+#special .contents .Swiper .swiper-container {height:100%; overflow:hidden;}
+#special .contents .Swiper .swiper-slide > div {width:100%;height:100%;}
+#special .contents .Swiper .swiper-slide > div {background-position:50% 50%;background-repeat:no-repeat;background-size:cover;}	
+#special .contents .Swiper .swiper-btn { position:absolute; top: 50%; transform: translateY(-50%); z-index:10; cursor:pointer; color: #fff; text-shadow: 0 0 5px #777; box-shadow: 0 0 7px rgba(119, 119, 119, 0.3); font-size: 20px; border: 1px solid #fff; width: 40px; height: 40px; text-align: center; line-height: 38px; transition: 0.5s; }
+#special .contents .Swiper .swiper-btn:hover { background-color: #fff; color: #333; }
+#special .contents .Swiper .swiper-button-prev { left: 50px;}
+#special .contents .Swiper .swiper-button-next { right: 50px; }
+#special .contents .Swiper .swiper-pagination {display:inline-block; width:auto; bottom:4%; left:50%; transform: translateX(-50%); z-index:3;}
+#special .contents .Swiper .swiper-pagination-bullet { display:inline-block; width:10px; height:10px; background-color: #fff; border-radius:50%;}
+#special .contents .Swiper .swiper-pagination-bullet-active {background-color:#ccc0ac; border: 1px solid #ccc0ac;  width:18px; border-radius:40%;}
+#special .contents .Swiper .swiper-btn:hover {opacity:1; text-shadow: none; box-shadow:none;}
+
+#special .contents .lt .swiper-view {position:absolute; left:0;}
+#special .contents .lt .swiper-view .txt {position:absolute; bottom:-60px; right:-100px; background-color:#fff; padding:70px 50px 90px; box-shadow:2px 2px 2px 0 rgb(0, 0, 0, 0.05); z-index:10;}
+#special .contents .Swiper .swiper-view .txt span {display:block; font-size:17px;}
+#special .contents .Swiper .swiper-view .txt strong {display:block; font-size:30px; font-weight:bold;}
+#special .contents .Swiper .swiper-view .txt p {display:block; font-size:15px;}
+#special .contents .rt .swiper-view {position:absolute;; right:0;}
+#special .contents .rt .swiper-view .txt {position:absolute; bottom:-60px; left:-100px; background-color:#fff; padding:100px; box-shadow:2px 2px 2px 0 rgb(0, 0, 0, 0.05); z-index:10;}
