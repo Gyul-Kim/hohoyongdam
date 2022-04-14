@@ -1,51 +1,18 @@
 function reserInfo(e){
-	
 	// 01.객실정보 및 요금 
-	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + rv_ttl + '/5',//실시간예약 객실가격 URL 
+	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + account + '/8',//실시간예약 객실가격 URL 
 	function(data){
 		var  i = 0;	
 		$("table#ROOM_CODE").append("<caption class='alt'>객실정보 및 요금 안내</caption>");
 		$("table#ROOM_CODE").append("<tbody></tbody>");
-		
-		$.each(data.result,function(key,val){
-			
-			//비수기
-			var P01_WEEK_PRCE = val["P01_WEEK_PRCE"].slice(0,-4);
-			var P01_FRD_PRCE = val["P01_FRD_PRCE"].slice(0,-4);
-			var P01_SAT_PRCE = val["P01_SAT_PRCE"].slice(0,-4);
-
-			//준성수기
-			var P04_WEEK_PRCE = val["P04_WEEK_PRCE"].slice(0,-4);
-			var P04_FRD_PRCE = val["P04_FRD_PRCE"].slice(0,-4);
-			var P04_SAT_PRCE = val["P04_SAT_PRCE"].slice(0,-4);
-			
-			//성수기
-			var P05_WEEK_PRCE = val["P05_WEEK_PRCE"].slice(0,-4);
-			var P05_FRD_PRCE = val["P05_FRD_PRCE"].slice(0,-4);
-			var P05_SAT_PRCE = val["P05_SAT_PRCE"].slice(0,-4);
-		
-			$("table#ROOM_CODE tbody").append(
-				"<tr class='room_" + i + "'>" +
-					"<td style='background:#fbfbfb;'><a href='room_0" + (i + 1)  +".html'>" + val["ETC_DETL"] + "</a></td>" + 
-					"<td> "+ val["ADLT_BASE_PERS"] + "명</td><td>" + val["ADLT_MAX_PERS"] + "명</td>" + 
-					"<td>" + P01_WEEK_PRCE + "만원</td><td>" + P01_FRD_PRCE + "만원</td>" + 
-					"<td>" + P01_SAT_PRCE + "만원</td>" + 
-					
-					"<td>" + P04_WEEK_PRCE + "만원</td><td>" + P04_FRD_PRCE + "만원</td>" + 
-					"<td>" + P04_SAT_PRCE + "만원</td><td>" + P05_SAT_PRCE + "만원</td>" +
-				"</tr>" 
-			);
-			i++;
-		});
-		
-		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + rv_ttl + '/8',//실시간예약 객실정보 URL
-		function(data){
+	
 		//타입 배열에 담기
 		var arr1 = new Array();
 		$.each(data.result,function(key,val){
 			var sorts = val["SORT_NO"] - 1;
-			arr1.push(data.result[sorts]["TYPE_NAME"]);
+			arr1.push(data.result[sorts]["TYPE_NM"]);
 		});
+	
 		// 중복값체크 
 		var arr2 = arr1.reduce(function(a,b){
 			if(a.indexOf(b) < 0) a.push(b);
@@ -69,74 +36,68 @@ function reserInfo(e){
 			var h = arr4[a];
 			arr5.push(h);
 		}
-		for(var i = 0; i < arr5.length; i++){
-			var ft = arr3.indexOf(arr5[i]);
-			var lt = arr3.lastIndexOf(arr5[i]) + 1;
-			var rsp = -(ft - lt);
-			// $("table#ROOM_CODE tbody tr").eq(arr5[i]).prepend("<th rowspan='3'>"+ data.result[arr5[i]]["TYPE_NAME"] +"</th>");		
-		}
+
+		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + account + '/5',//실시간예약 객실가격 URL 
+		function(data){
+			
+			for(var i = 0; i < arr5.length; i++){ //arr5.length;
+				
+				// 01.객실정보 및 요금 
+				var P01_WEEK_PRCE = data.result[arr5[i]]["P01_WEEK_PRCE"].slice(0,-4);
+				var P01_FRD_PRCE = data.result[arr5[i]]["P01_FRD_PRCE"].slice(0,-4);
+				var P01_SAT_PRCE = data.result[arr5[i]]["P01_SAT_PRCE"].slice(0,-4);
+				
+				var P04_WEEK_PRCE = data.result[arr5[i]]["P04_WEEK_PRCE"].slice(0,-4);
+				var P04_FRD_PRCE = data.result[arr5[i]]["P04_FRD_PRCE"].slice(0,-4);
+				var P04_SAT_PRCE = data.result[arr5[i]]["P04_SAT_PRCE"].slice(0,-4);
+				
+				var P05_WEEK_PRCE = data.result[arr5[i]]["P05_WEEK_PRCE"].slice(0,-4);
+				var P05_FRD_PRCE = data.result[arr5[i]]["P05_FRD_PRCE"].slice(0,-4);
+				var P05_SAT_PRCE = data.result[arr5[i]]["P05_SAT_PRCE"].slice(0,-4);
+			
+				var P06_WEEK_PRCE = data.result[arr5[i]]["P06_WEEK_PRCE"].slice(0,-4);
+				var P06_FRD_PRCE = data.result[arr5[i]]["P06_FRD_PRCE"].slice(0,-4);
+				var P06_SAT_PRCE = data.result[arr5[i]]["P06_SAT_PRCE"].slice(0,-4);
+			
+				$("table#ROOM_CODE tbody").append(
+					"<tr class='room_" + i + "'><th class='tl'></th>" +
+						"<td class='ad'></td><td class='am'></td>" + 
+					"</tr>"
+				);	
+			}
+			
+			$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + account + '/8',//실시간예약 객실가격 URL 
+			function(data){	
+				for(var i = 0; i < arr5.length; i++){
+					$("#ROOM_CODE .room_" + i).find(".ad").text(data.result[arr5[i]]["ADLT_BASE_PERS"] + "명");
+					$("#ROOM_CODE .room_" + i).find(".am").text(data.result[arr5[i]]["ADLT_MAX_PERS"] + "명");
+					$("#ROOM_CODE .room_" + i).find(".tl").text(data.result[arr5[i]]["TYPE_NM"]);
+				}
+			});
+			
+			$("table#ROOM_CODE tbody tr").eq(0).append("<td colspan='7' rowspan='"+  arr1.length +"'style='line-height:3em;'><a href='#' onclick='return false;' class='rv_dt_btn'>실시간예약 참고</a></td>");
+			
 		});
-		$("table#ROOM_CODE tbody tr").eq(0).prepend("<th rowspan='3'>A타입</th>");	
-		$("table#ROOM_CODE tbody tr").eq(3).prepend("<th rowspan='3'>B타입</th>");	
-
-		$("table#ROOM_CODE tbody tr").eq(0).find("td a").text("301");
-		$("table#ROOM_CODE tbody tr").eq(1).find("td a").text("401");
-		$("table#ROOM_CODE tbody tr").eq(2).find("td a").text("501");
-		$("table#ROOM_CODE tbody tr").eq(3).find("td a").text("302");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td a").text("402");
-		$("table#ROOM_CODE tbody tr").eq(5).find("td a").text("502");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(4)").text("50만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(4)").text("45만원");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(5)").text("55만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(5)").text("50만원");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(6)").text("60만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(6)").text("55만원");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(7)").text("60만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(7)").text("55만원");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(8)").text("65만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(8)").text("60만원");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(9)").text("70만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(9)").text("65만원");
-
-		$("table#ROOM_CODE tbody tr").eq(1).find("td:nth-child(10)").text("80만원");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td:nth-child(10)").text("75만원");
-
-
-
-		$("table#ROOM_CODE tbody tr").eq(0).find("td a").attr("href","room_01.html"); 
-		$("table#ROOM_CODE tbody tr").eq(1).find("td a").attr("href","room_03.html"); 
-		$("table#ROOM_CODE tbody tr").eq(2).find("td a").attr("href","room_05.html");
-		$("table#ROOM_CODE tbody tr").eq(3).find("td a").attr("href","room_02.html");
-		$("table#ROOM_CODE tbody tr").eq(4).find("td a").attr("href","room_04.html");
-		$("table#ROOM_CODE tbody tr").eq(5).find("td a").attr("href","room_06.html");
 	});
 	
 	// 02.객실 이용시 확인사항
-	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + rv_ttl + '/3',//실시간예약 입실안내 URL
+	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + account + '/3',//실시간예약 입실안내 URL
 	function(data){
 		$.each(data.result,function(key,val){
 			if(val["PONT_YN"] == "Y") $("ul.ENTR_COMM").append("<li style='color:red;'>" + val["ENTR_COMM"] + "</li>");	
 			else $("ul.ENTR_COMM").append("<li>" + val["ENTR_COMM"] + "</li>");
 		});
 	});
-
 	// 03.입금전 확인사항
-	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + rv_ttl + '/2',//실시간예약 취소수수료 URL
+	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + account + '/2',//실시간예약 취소수수료 URL
 	function(data){
 		$.each(data.result,function(key,val){
 			if(val["PONT_YN"] == "Y") $("ul.CNCL_COMM").append("<li style='color:red;'>" + val["CNCL_COMM"] + "</li>");	
 			else $("ul.CNCL_COMM").append("<li>" + val["CNCL_COMM"] + "</li>");	
 		});				
 	});
-
-	//환불규정
-	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + rv_ttl + '/1',//실시간예약 환불규정 URL 
+	// 04.환불규정
+	$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/' + account + '/1',//실시간예약 환불규정 URL 
 	function(data){
 		$("table#REFU_PRCE").append("<caption class='alt'>환불규정</caption>");
 		$("table#REFU_PRCE").append("<thead><tr></tr></thead><tbody><tr></tr></tbody>");
@@ -150,4 +111,3 @@ function reserInfo(e){
 		$("table#REFU_PRCE thead tr th").eq(1).remove(); $("table#REFU_PRCE tbody tr td").eq(1).remove();
 	});
 }
-

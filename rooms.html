@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="css/common.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script src="js/swiper.js"></script>
 <script src="js/modify.js" defer></script>
 <script src="js/common.js" defer></script>
@@ -32,9 +33,12 @@
                 <div class="swiper-view">
                     <div class="swiper-container swiper">
                         <div class="swiper-wrapper swiper-image"></div>
-                        <div class="swiper-button-next swiper-btn"></div>
-                        <div class="swiper-button-prev swiper-btn"></div>
-                        <div class="swiper-pagination second"></div>
+                        <div class="swiper-button-btns">
+                            <div class="swiper-button-prev swiper-btn"><i class="xi-angle-left"></i></div>
+                            <div class="swiper-button-line"><i>ㅣ</i></div>
+                            <div class="swiper-button-next swiper-btn"><i class="xi-angle-right"></i></div>
+                            <div class="swiper-pagination second"></div>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +48,7 @@
         <div class="rooms_vid">
             <div class="vid_left">
             <div class="vid_mov">
-                <iframe src="https://player.vimeo.com/video/695709879?autoplay=1&loop=1&background=1" width="100%" height="auto" id="Vids" allow="autoplay" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://player.vimeo.com/video/695709879?autoplay=1&loop=1&background=1" width="100%" height="auto" id="MyVideo" allow="autoplay" frameborder="0" allowfullscreen=""></iframe>
             </div>
             </div>
             <div class="vid_right">
@@ -92,9 +96,12 @@
                   <div class="swiper-view">
                      <div class="swiper-container swiper3">
                         <div class="swiper-wrapper swiper-image"></div>
-                        <div class="swiper-button-next swiper-btn"></div>
-                        <div class="swiper-button-prev swiper-btn"></div>
-                        <div class="swiper-pagination second"></div>
+                        <div class="swiper-button-btns">
+                            <div class="swiper-button-prev swiper-btn menu"><i class="xi-angle-left"></i></div>
+                            <div class="swiper-button-line"><i>ㅣ</i></div>
+                            <div class="swiper-button-next swiper-btn menu"><i class="xi-angle-right"></i></div>
+                            <div class="swiper-pagination"></div>
+                         </div>
                      </div>
                  </div>
                </div>

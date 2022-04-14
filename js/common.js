@@ -129,6 +129,7 @@ switch(path) {
 		break;
 
 	case 'about' :
+		videoControl2(video);
 		for(var i = 0; i < img[2].length; i++) {
 			$("#about .abt_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
@@ -151,6 +152,7 @@ switch(path) {
 		break;
 
 	case 'rooms' :
+		// videoControl(video);
 		$("body").addClass("rooms_" + numbering(detailPath));
 
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8',
@@ -277,11 +279,14 @@ switch(path) {
 							'<div class="swiper-view">' +
 								'<div class="swiper-container swiper">' +
 									'<div class="swiper-wrapper swiper-image"></div>' +
-									'<div class="swiper-button-prev swiper-btn xi-angle-left-thin"></div>' +
-									'<div class="swiper-button-next swiper-btn xi-angle-right-thin"></div>' +
-									'<div class="swiper-pagination"></div>' +
+									'<div class="swiper-button-btns">' +
+										'<div class="swiper-button-prev swiper-btn"><i class="xi-angle-left"></i></div>' +
+										'<div class="swiper-button-line"><i>ㅣ</i></div>' +
+										'<div class="swiper-button-next swiper-btn"><i class="xi-angle-right"></i></div>' +
+										'<div class="swiper-pagination second"></div>' +
+									'</div>' +
 								'</div>' +
-								`<div class="txt"><span>${specialObj[i]["TITLE_KR"]}</span><strong>${specialObj[i]["TITLE_EN"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
+								`<div class="txt"><span>${specialObj[i]["TITLE_EN"]}</span><strong>${specialObj[i]["TITLE_KR"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
 							'</div>' +
 						'</div>'
 					);
@@ -291,11 +296,14 @@ switch(path) {
 							'<div class="swiper-view">' +
 								'<div class="swiper-container swiper">' +
 									'<div class="swiper-wrapper swiper-image"></div>' +
-									'<div class="swiper-button-prev swiper-btn xi-angle-left-thin"></div>' +
-									'<div class="swiper-button-next swiper-btn xi-angle-right-thin"></div>' +
-									'<div class="swiper-pagination"></div>' +
+									'<div class="swiper-button-btns">' +
+										'<div class="swiper-button-prev swiper-btn"><i class="xi-angle-left"></i></div>' +
+										'<div class="swiper-button-line"><i>ㅣ</i></div>' +
+										'<div class="swiper-button-next swiper-btn"><i class="xi-angle-right"></i></div>' +
+										'<div class="swiper-pagination second"></div>' +
+									'</div>' +
 								'</div>' +
-								`<div class="txt"><span>${specialObj[i]["TITLE_KR"]}</span><strong>${specialObj[i]["TITLE_EN"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
+								`<div class="txt"><span>${specialObj[i]["TITLE_EN"]}</span><strong>${specialObj[i]["TITLE_KR"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
 							'</div>' +
 						'</div>'
 					);
@@ -308,13 +316,10 @@ switch(path) {
 					);
 				} Swipers(`#special .special${i + 1}`, "auto", true, 0, true);
 			}
-
-			
-
 		});			
 		break;
 
-	case 'notice':
+	case 'community':
 		// notice snb button
 		$(".contents .snb li a").on("click",function(){ 
 			var nb = $(this).parent("li").index();
@@ -333,7 +338,7 @@ switch(path) {
 				$("#Banner .ttls strong").text("Q&A");
 			
 				$(".frame h3 strong").text("문의사항");
-				$(".frame h3 span").text("해그라미 펜션&캠핑에 무엇이든 물어보세요.");
+				$(".frame h3 span").text("호호용담에 무엇이든 물어보세요.");
 				$(".frame iframe").attr("src","/board/bbs/board.php?bo_table=qa");
 			} return false;
 		});
@@ -465,7 +470,6 @@ function Swipers2(value, view, center, Between, boolean){
 		paginationClickable: true,
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
-		pagination: '.swiper-pagination',
 		slidesPerView: 3.5,
 		centeredSlides: center,
 		spaceBetween: Between,

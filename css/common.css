@@ -9,6 +9,13 @@ section {width:100%; height:100%;}
 section,.section {position:relative; width:100%;}
 *, ::after, ::before {border-style:solid; border-width:0; box-sizing:0;}
 
+/* images */
+#about .abt_vid .vid_mov iframe {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/exterior.jpg) no-repeat 50% 50%; background-size:cover;} 
+/* #rooms .rooms_vid .vid_mov iframe {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/rooms.jpg) no-repeat 50% 50%; background-size:cover;}
+#special .sp_visual .vid_mov iframe {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/special.jpg) no-repeat 50% 50%; background-size:cover;}  */
+#reserve #Banner {background:url(https://gonylab8.speedgabia.com/hohoyongdam/temp/room/6/5.jpg) no-repeat 50% 50%; background-size:cover;}
+#community #Banner {background:url(https://gonylab8.speedgabia.com/hohoyongdam/temp/room/5/4.jpg) no-repeat 50% 50%; background-size:cover;}
+
 /* header */
 .header {position:static; width:100%;}
 .header .header_logo {position:absolute; top:20px; left:50px; width:332px; height:119px; transform-style:preserve-3d; overflow: hidden; white-space:nowrap; z-index:10;}
@@ -30,9 +37,9 @@ section,.section {position:relative; width:100%;}
 .header .header_sub ul li span.kr {display:none;}
 .header .header_sub ul li:first-child {margin-top:7px;}
 
-body:not(#index) .header .header_logo a { background:url(../images/logo_abt.png) no-repeat 50% 50%; background-size:cover;}
-body:not(#index) .header .header_logo {top:10px;}
-body:not(#index) .header .header_sub {top:50px;}
+body:not(#index,.tables) .header .header_logo a { background:url(../images/logo_abt.png) no-repeat 50% 50%; background-size:cover;}
+body:not(#index,.tables) .header .header_logo {top:10px;}
+body:not(#index,.tables) .header .header_sub {top:50px;}
 
 
 /* footer */
@@ -72,17 +79,15 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 .Swipers .swiper-slide-active > div {transition:1s;opacity:1;}
 .Swipers .swiper-slide .visual_bg {position: absolute; top:0; left:0; width:100%; height:100%; opacity:1; z-index:1000;}
 
-.Swipers .swiper-btns {position:absolute; left:1px; bottom:0; width:250px; height:132px;}
-.Swipers .swiper-btn {position:absolute; bottom:0; width:49px;height:132px;  z-index:10; cursor:pointer;}
+.Swipers .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:auto; height:30px; transform:translateX(-50%); z-index:15;}
+.Swipers .swiper-btn {width:20px;height:20px;  z-index:10; cursor:pointer; position:relative;}
 .Swipers .swiper-btn {background-size:contain; background-position:center; background-repeat:no-repeat;}
-.Swipers .swiper-pagination {bottom:60px; left:50%; width:auto; transform:translateX(-50%);}
-.Swipers .swiper-button-prev {background-image:url(../images/prev.png); left:0; top:50%; transform:translateY(-50%);}
-.Swipers .swiper-button-next {background-image:url(../images/next.png); right:0; top:50%; transform:translateY(-50%)}
-.Swipers .swiper-pagination-bullet {width:35px; height:19px; display:inline-block;}
-.Swipers .swiper-pagination-bullet {background:url(../images/off.png) no-repeat left top;}
-.Swipers .swiper-pagination-bullet {transition: transform 0.3s ease;}
-.Swipers .swiper-pagination-bullet-active {background:url(../images/on.png) no-repeat left top;}
-
+.Swipers .swiper-pagination {position:relative; margin-top:6px; margin-left:20px;} 
+.Swipers .swiper-button-prev {left:0; top:50%; transform:translateY(-50%);}
+.Swipers .swiper-button-next {right:0; top:50%; transform:translateY(-50%)} 
+.Swipers .swiper-button-line {margin:5px 3px 0;}
+.swiper-pagination-clickable .swiper-pagination-bullet {margin:0 3px;}
+.Swipers .swiper-button-btns i {font-size:20px; color:#fff;}
 
 /* index */
 #index .idx_main {position:relative; width:100%; height:auto;}
@@ -141,7 +146,8 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 strong {display:block; font-size:20px; color:#000; margin:10px 0 20px;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 span {display:block; font-size:15px; color:#333;}
 
-#index .idx_special .Swipers .swiper-button-next {right:245px;}
+#index .idx_special .Swipers .swiper-button-next {position:absolute; width:55px; height:55px; right:245px; background-image:url(../images/next.png);}
+#index .idx_special .Swipers .swiper-button-prev {position:absolute; width:55px; height:55px; left:0; background-image:url(../images/prev.png);}
 
 #index .idx_vid {position:relative; display:flex; margin-top:200px; padding:100px 0;}
 #index .idx_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
@@ -249,19 +255,87 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #special .contents .Swiper .swiper-container {height:100%; overflow:hidden;}
 #special .contents .Swiper .swiper-slide > div {width:100%;height:100%;}
 #special .contents .Swiper .swiper-slide > div {background-position:50% 50%;background-repeat:no-repeat;background-size:cover;}	
-#special .contents .Swiper .swiper-btn { position:absolute; top: 50%; transform: translateY(-50%); z-index:10; cursor:pointer; color: #fff; text-shadow: 0 0 5px #777; box-shadow: 0 0 7px rgba(119, 119, 119, 0.3); font-size: 20px; border: 1px solid #fff; width: 40px; height: 40px; text-align: center; line-height: 38px; transition: 0.5s; }
-#special .contents .Swiper .swiper-btn:hover { background-color: #fff; color: #333; }
-#special .contents .Swiper .swiper-button-prev { left: 50px;}
-#special .contents .Swiper .swiper-button-next { right: 50px; }
-#special .contents .Swiper .swiper-pagination {display:inline-block; width:auto; bottom:4%; left:50%; transform: translateX(-50%); z-index:3;}
-#special .contents .Swiper .swiper-pagination-bullet { display:inline-block; width:10px; height:10px; background-color: #fff; border-radius:50%;}
-#special .contents .Swiper .swiper-pagination-bullet-active {background-color:#ccc0ac; border: 1px solid #ccc0ac;  width:18px; border-radius:40%;}
-#special .contents .Swiper .swiper-btn:hover {opacity:1; text-shadow: none; box-shadow:none;}
+#special .contents .Swiper .swiper-pagination {display:inline-block; width:auto;; z-index:3;}
+.swiper-pagination-bullet {display:inline-block; width:10px; height:10px; background-color:transparent; border-radius:50%; border:1px solid #fff;}
+.swiper-pagination-bullet-active {background-color:#fff; border: 2px solid #ccc0ac;  width:12px; height:12px; border-radius:50%; margin-bottom:-2px!important;}
+.Swiper .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:auto; height:30px; transform:translateX(-50%); z-index:15;}
+.Swiper .swiper-btn {width:20px;height:20px;  z-index:10; cursor:pointer; position:relative;}
+.Swiper .swiper-btn {background-size:contain; background-position:center; background-repeat:no-repeat;}
+.Swiper .swiper-pagination {position:relative; margin-top:6px; margin-left:20px;} 
+.Swiper .swiper-button-prev {left:0; top:50%; transform:translateY(-50%);}
+.Swiper .swiper-button-next {right:0; top:50%; transform:translateY(-50%)} 
+.Swiper .swiper-button-line {margin:5px 3px 0;}
+.swiper-pagination-clickable .swiper-pagination-bullet {margin:0 3px;}
+.Swiper .swiper-button-btns i {font-size:20px; color:#fff;}
 
 #special .contents .lt .swiper-view {position:absolute; left:0;}
-#special .contents .lt .swiper-view .txt {position:absolute; bottom:-60px; right:-100px; background-color:#fff; padding:70px 50px 90px; box-shadow:2px 2px 2px 0 rgb(0, 0, 0, 0.05); z-index:10;}
-#special .contents .Swiper .swiper-view .txt span {display:block; font-size:17px;}
-#special .contents .Swiper .swiper-view .txt strong {display:block; font-size:30px; font-weight:bold;}
-#special .contents .Swiper .swiper-view .txt p {display:block; font-size:15px;}
+#special .contents .lt .swiper-view .txt {position:absolute; bottom:-60px; right:-300px; background-color:#fff; padding:50px 90px 35px 45px; box-shadow:2px 2px 2px 0 rgb(0, 0, 0, 0.05); z-index:10;}
+#special .contents .Swiper .swiper-view .txt span {display:block; font-size:15px; margin-bottom:15px; color:#111;}
+#special .contents .Swiper .swiper-view .txt strong {display:block; font-size:28px; margin-bottom:25px;}
+#special .contents .Swiper .swiper-view .txt p {display:block; font-size:15px; line-height:1.25;}
 #special .contents .rt .swiper-view {position:absolute;; right:0;}
-#special .contents .rt .swiper-view .txt {position:absolute; bottom:-60px; left:-100px; background-color:#fff; padding:100px; box-shadow:2px 2px 2px 0 rgb(0, 0, 0, 0.05); z-index:10;}
+#special .contents .rt .swiper-view .txt {position:absolute; bottom:-60px; left:-300px; background-color:#fff; padding:50px 90px 35px 45px; box-shadow:2px 0 2px 2px rgb(0, 0, 0, 0.05); z-index:10;}
+
+/* common  */
+
+/* Reserve */
+#reserve .frame_02 {display:none;}
+#reserve .frame_02 h2 {width:250px;margin:0 auto;padding:0px 0 35px;}
+#reserve .frame_02 table {width:100%;border:1px solid #e7e7e7;font-family:'돋움',Dotum!important;}
+#reserve .frame_02 table tr th,
+#reserve .frame_02 table tr td {border-right:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;text-align:center;font-size:13px;color:#676767; vertical-align:middle;}
+#reserve .frame_02 > div > h3 {margin-bottom:10px;}
+#reserve .frame_02 ul li {padding-left:10px;font-size:12px;line-height:1.6em;color:#676767;font-family:'돋움',Dotum!important;}
+#reserve .frame_02 ul li {background:url(http://gonylab2.speedgabia.com/common/li_b.gif) no-repeat left 3px;}
+#reserve .frame_02 ul li span {color:#ee3939;}
+#reserve .frame_02 .r_info_01 {position:relative;margin-bottom:30px;}
+#reserve .frame_02 .r_info_01 h4 {text-align:left;margin-bottom:10px;}
+#reserve .frame_02 .r_info_01 table {margin-bottom:20px;}
+#reserve .frame_02 .r_info_01 table .room_ {background:#efefef;height:50px;}
+#reserve .frame_02 .r_info_01 table > thead {line-height:1.1em;background:#f8f8f8;}
+#reserve .frame_02 .r_info_01 table > thead tr th {font-weight:bold;}
+#reserve .frame_02 .r_info_01 table > tbody tr td {line-height:3em; vertical-align:middle;}
+#reserve .frame_02 .r_info_02 {margin:50px 0;padding-top:50px;text-align:left;} 
+#reserve .frame_02 .r_info_03 {text-align:left;}
+#reserve .frame_02 .r_info_03 .CNCL_COMM {margin-bottom:50px;}
+#reserve .frame_02 .r_info_03 table {line-height:1.5em;margin-top:20px;}
+#reserve .frame_02 .r_info_03 table > thead {background:#f2f2f2;}
+
+#Banner                                             {position:relative;width:100%;height:60vh;min-height:450px;}
+#Banner                                             {background-repeat:no-repeat;background-position:50% 50%;background-size:cover;}
+#Banner:before                                      {position:absolute;top:0;left:0;width:100%;height:100%;content:"";display:block;opacity:0.5;background:#000;z-index:1;}
+#Banner .InBox                                      {position:relative;width:100%;height:100%;overflow:hidden;}
+#Banner .InBox .ttls                                {position:absolute;top:50%;left:5%;height:110px;margin-top:-55.5px;color:#fff;z-index:1;}
+#Banner .InBox .ttls div                            {display:inline-block;width:100px;border-top:1px solid #fff;padding-top:7px;margin-right:15px;}
+#Banner .InBox .ttls span                           {font-family:'linotype-didot';font-size:25px;}
+#Banner .InBox .ttls span b                         {font-family:'linotype-didot';}
+#Banner .InBox .ttls strong                         {display:block;font-size:75px;margin:15px 0 0 15px;letter-spacing:3px;}
+
+/* table */
+.tables .contents .InnerBox {max-width:1400px;min-width:1000px;padding:3% 0 7%;margin:0 auto;}
+.tables .contents .snb {width:500px;margin:0 auto;padding:15px 0;margin-bottom:5%;overflow:hidden;}
+.tables .contents .snb {border:1px solid #e8e8e8;border-right:none;border-left:none;}
+.tables .contents .snb li {float:left;width:50%;background:url(../images/pv_b.gif) no-repeat right center;}
+.tables .contents .snb li:last-child {background:none;}
+.tables .contents .snb li a {display:block;padding:15px 0;text-align:center;font-size:17px;}
+.tables .contents .snb li.active a {font-weight:bold;}
+
+.tables .notice {width:500px;margin:25px auto 50px;text-align:center;}
+.tables .notice span {font-size:15px;font-weight:500;line-height:1.75;}
+.tables .notice a {display:block;padding:20px 0;margin:15px auto;width:200px;font-weight:bold;}
+.tables .notice a:hover {color:#787878;}
+
+.tables .contents .bd_menu {position:relative;max-width:1300px;min-width:800px;margin:0 auto;}
+.tables .contents .stb {position:absolute;top:110px;left:15px;overflow:hidden;z-index:100;}
+.tables .contents .stb li {float:left;margin:0 5px;border:1px solid #e8e8e8;}
+.tables .contents .stb li:last-child {background:none;}
+.tables .contents .stb li a {display:block;padding:12.5px 15px;width:100px;text-align:center;font-size:15px;}
+.tables .contents .stb li.active a {color:#fff;background:#41595e;}
+
+.tables .contents .frame {position:relative;max-width:1300px;min-width:800px;margin:0 auto;}
+.tables .contents .frame h3 {width:98%;margin:0 auto;font-size:35px;}
+.tables .contents .frame h3 strong {display:block;}
+.tables .contents .frame h3 span {display:block;font-size:15px;padding:15px 0;}
+.tables .contents .frame p {width:800px;margin:0 auto 5%;overflow:hidden;}
+.tables .contents .frame p span {display:block;line-height:1.5;font-size:16px;float:left;width:50%;text-align:center;}
+.tables .contents .frame iframe {display:block;margin-top:10px;padding-top:10px;border-top:1px solid #000;}
