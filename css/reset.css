@@ -1,19 +1,22 @@
 @charset "UTF-8";
 @font-face {
 	font-family: 'YiSunShinDotumB';
-	font-style: Bold;
+	font-weight: bold;
+	font-style: normal;
 	src: url('../fonts/YiSunShinDotumB.ttf');
 	
 }
 
 @font-face {
-	font-family: 'YiSunShinDotum';
+	font-family: 'YiSunShinDotumM';
+	font-weight:normal;
 	font-style: normal;
 	src: url('../fonts/YiSunShinDotumM.ttf');
 }
 
 @font-face {
 	font-family: 'YiSunShinDotumL';
+	font-weight:lighter;
 	font-style:normal;
 	font-weight:100;
 	src: url('../fonts/YiSunShinDotumL.ttf');
@@ -37,7 +40,7 @@ time, mark, audio, video
 	margin:0;border:0;outline:0;padding:0;background:transparent;
 	font-style:normal; font-weight:normal;vertical-align:baseline;
 	
-	font-family:'YiSunShinDotum';
+	font-family:'YiSunShinDotum',serif;
 }
 
 

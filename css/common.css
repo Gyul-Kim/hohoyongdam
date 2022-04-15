@@ -10,11 +10,12 @@ section,.section {position:relative; width:100%;}
 *, ::after, ::before {border-style:solid; border-width:0; box-sizing:0;}
 
 /* images */
-#about .abt_vid .vid_mov iframe {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/exterior.jpg) no-repeat 50% 50%; background-size:cover;} 
-/* #rooms .rooms_vid .vid_mov iframe {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/rooms.jpg) no-repeat 50% 50%; background-size:cover;}
-#special .sp_visual .vid_mov iframe {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/special.jpg) no-repeat 50% 50%; background-size:cover;}  */
+#about .abt_vid #MyVideo  {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/exterior.jpg) no-repeat 50% 50%; background-size:contain;} 
+#rooms .rooms_vid #MyVideo {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/rooms.jpg) no-repeat 50% 50%; background-size:contain;} 
+#special .sp_visual #MyVideo {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/special.jpg) no-repeat 50% 50%; background-size:contain;}  
 #reserve #Banner {background:url(https://gonylab8.speedgabia.com/hohoyongdam/temp/room/6/5.jpg) no-repeat 50% 50%; background-size:cover;}
 #community #Banner {background:url(https://gonylab8.speedgabia.com/hohoyongdam/temp/room/5/4.jpg) no-repeat 50% 50%; background-size:cover;}
+#MyVideo {position:absolute; top:50%; left:50%; transform:translate3d(-50%, -50%, 0); min-width:100%; min-height:100%;}
 
 /* header */
 .header {position:static; width:100%;}
@@ -107,7 +108,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_main .idx_img_group .img1 .slide_btn, .img3 .slide_btn {text-align:right;}
 #index .idx_main .idx_img_group  .slide_btn .slide_btn_bullet {background-color:rgba(0, 0, 0, .1); display:inline-block; width:20px; height:1px; position: relative; margin-top:10px; margin-left:10px;}
 #index .idx_main .idx_img_group  .slide_btn .slide_btn_bullet:first-child {margin-left:0;}
-#index .idx_main .idx_img_group  .slide_btn .slide_btn_bullet::before {content:""; display:block; position: absolute; background-color:#fff; top:0; left:0;}
+#index .idx_main .idx_img_group  .slide_btn .slide_btn_bullet2 {display:block; position: absolute; background-color:#fff; top:0; left:0; height:1px;}
 
 #index .idx_main_txt {position:absolute; width:430px; height:70px; top:200px; right:300px; overflow:hidden; z-index:15;}
 #index .idx_main_txt span {display: block; font-size:18px; margin-bottom:15px;}
@@ -117,19 +118,21 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_rooms::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
 #index .idx_rooms .idx_rooms_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
 #index .idx_rooms .idx_accommodation {display:flex; width:100%; height:auto;}
-#index .idx_rooms .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px);}
+#index .idx_rooms .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:700px; width:calc(50% - 210px);}
 #index .idx_rooms .title span, .idx_rooms .title strong, .idx_rooms .title strong, .idx_rooms .title p {display:block;}
 #index .idx_rooms .title strong {font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #index .idx_rooms .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
-
-#index .idx_rooms .title p {font-size:15px; color:#222; line-height:1.75;}
-#index .idx_rooms .title p > span:first-child {margin-bottom:30px;}
-#index .idx_rooms .title a {display:block; font-size:16.5px; margin-top:70px;}
+#index .idx_rooms .title .txt {position:absolute; top:150px; left:0; width:450px; height:250px;}
+#index .idx_rooms .title .txt div {visibility:hidden; opacity:0; transition:0.5s; position:absolute; top:0; left:0;}
+#index .idx_rooms .title .txt div:first-of-type {visibility:visible; opacity:1; transition:0.5s;}
+#index .idx_rooms .title .txt p {font-size:15px; color:#222; line-height:1.75;}
+#index .idx_rooms .title .txt p > span:first-child {margin-bottom:30px;}
+#index .idx_rooms .title .txt a {display:block; font-size:16.5px; margin-top:70px;}
 
 #index .idx_rooms .idx_acc {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
 #index .idx_rooms .idx_acc .swiper-view {height:80vh;}
 
-#index .idx_rooms_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:400px;}
+#index .idx_rooms_preview {left:0; bottom:0; ; right:auto; height:auto; overflow: hidden; position:absolute; width:400px;}
 #index .idx_rooms_preview .swiper-view {height:300px!important;}
 
 
@@ -173,12 +176,11 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #about .about_visual_title {position:absolute; top:0; right:8.5%; margin-top:150px;}
 #about .about_visual_title h3 {display:block; font-size:45px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 
-#about .abt_vid {position:relative; display:flex; padding:100px 0;}
-#about .abt_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
-#about .abt_vid .vid_left .vid_mov {display:flex; position:relative; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
-#about .abt_vid .vid_left .vid_mov iframe {display:block; width:100%; height:600px;}
-#about .abt_vid .vid_right {flex:1;}
-#about .abt_vid .vid_right .vid_txt {padding:50px 0 60px 40px;}
+#about .abt_vid {position:relative; padding:100px 0; width:100%; max-width:1920px; margin:0 auto; height:900px; overflow:hidden;}
+#about .abt_vid .vid_left {width:56%; height:700px; position:relative;}
+#about .abt_vid .vid_left .video {display:flex; position:relative; width:100%; height:100%; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
+#about .abt_vid .vid_right {position:absolute; width:37%; right:0; top:140px;}
+#about .abt_vid .vid_right .vid_txt {padding:50px 0 60px;}
 #about .abt_vid .vid_right span, .idx_vid .vid_right strong, .idx_vid .vid_right p, .idx_vid .vid_right p span {display:block;}
 #about .abt_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #about .abt_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
@@ -203,20 +205,21 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_visual_title {position:absolute; top:0; right:8.5%; margin-top:150px;}
 #rooms .rooms_visual_title h3 {display:block; font-size:60px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 
-#rooms .info_bg {position:absolute; width:100%; height:1000px; top:12%; right:0; background-color:#f2f1e5;}
-#rooms .rooms_info {position:relative; width:70%; height:400px; top:70px; left:10%; margin-bottom:70px;}
-#rooms .rooms_info h3 {display:block; font-size:30px; margin-bottom:35px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
-#rooms .rooms_info > ul {float:left; margin-right:45px;}
-#rooms .rooms_info > ul:nth-child(2) {margin-top:70px; margin-right:150px;}
-#rooms .rooms_info > ul li {line-height:2.25; font-size: 16px;}
+#rooms .info_bg {position:absolute; width:100%; height:1050px; top:12%; right:0; background-color:#f2f1e5;}
+#rooms .rooms_info {position:relative; display:flex; width:100%; max-width:1500px; height:100%; overflow:hidden; top:70px; margin:0 auto 70px;}
+#rooms .rooms_info > h3 {display:block; font-size:30px; flex:0.5; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
+#rooms .rooms_info ul h3 {display:block; font-size:26px; color:#9e8b7b; margin-bottom:25px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
+#rooms .rooms_info > ul {float:left; flex:0.75; margin-right:45px;}
+#rooms .rooms_info > ul:nth-child(3) {flex:0.45;}
+#rooms .rooms_info > ul:last-child {flex:1;}
+#rooms .rooms_info > ul li {line-height:2.25; font-size:14px;}
 #rooms .rooms_info > ul li .tl {display:inline-block; margin-right:10px; font-weight:bold; font-size:17px; text-align:left; width:100px;}
 
-#rooms .rooms_vid {position:relative; display:flex; padding:120px 0;}
-#rooms .rooms_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
-#rooms .rooms_vid .vid_left .vid_mov {display:flex; position:relative; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
-#rooms .rooms_vid .vid_left .vid_mov iframe {display:block; width:100%; height:600px;}
-#rooms .rooms_vid .vid_right {flex:1;}
-#rooms .rooms_vid .vid_right .vid_txt {padding:50px 0 60px 40px;}
+#rooms .rooms_vid {position:relative; top:170px; width:100%; max-width:1920px; margin:0 auto; height:900px; overflow:hidden;}
+#rooms .rooms_vid .vid_left {width:56%; height:700px; position:relative;}
+#rooms .rooms_vid .vid_left .video {display:flex; position:relative; width:100%; height:100%; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
+#rooms .rooms_vid .vid_right {position:absolute; width:37%; right:0; top:50px;}
+#rooms .rooms_vid .vid_right .vid_txt {padding:0 0 60px;}
 #rooms .rooms_vid .vid_right span, .idx_vid .vid_right strong, .idx_vid .vid_right p, .idx_vid .vid_right p span {display:block;}
 #rooms .rooms_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px;}
 #rooms .rooms_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
@@ -224,7 +227,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_vid .vid_right .vid_txt p span:first-child {margin-bottom:30px;}
 #rooms .rooms_vid .vid_right .vid_img {display:block; width:550px; height:366px;}
 
-#rooms .rooms_menu {margin:70px 0 180px; height:800px; padding:100px 0; position: relative;}
+#rooms .rooms_menu {height:800px; top:170px; position: relative; max-width:1920px; margin:0 auto 300px;}
 #rooms .rooms_menu::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
 #rooms .rooms_menu .rooms_menu_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
 #rooms .rooms_menu .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px);}
@@ -233,23 +236,23 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_menu .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
 #rooms .rooms_menu .title p {font-size:15px; color:#222; line-height:1.75;}
 #rooms .rooms_menu .title p > span:first-child {margin-bottom:30px;}
-#rooms .rooms_menu .title a {display:block; font-size:16.5px; margin-top:70px;}
-#rooms .rooms_menu .rooms_menu_swiper {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
-#rooms .rooms_menu .rooms_menu_swiper .swiper-view {height:80vh;}
+#rooms .rooms_menu .title a {display:block; font-size:16.5px; margin-top:27px;}
+#rooms .rooms_menu .rooms_menu_swiper {width:calc(50% + 210px); position:absolute; top:100px; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
+#rooms .rooms_menu .rooms_menu_swiper .swiper-view {height:610px;}
 #rooms .rooms_menu_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:400px;}
-#rooms .rooms_menu_preview .swiper-view {height:300px!important;}
+#rooms .rooms_menu_preview .swiper-view {height:250px!important;}
 
 /* special */
 #special .sp_visual {position: relative; width:100%; height:100%; overflow:hidden; z-index:5;}
-#special .sp_visual .wrap {float: right;; width:87%; height:90vh; position:relative; margin-top:150px;}
-#special .sp_visual .vid_mov {position:absolute; width:100%; height:100%;}
-#special .sp_visual .vid_mov iframe {width:100%; height:100%;}
+#special .sp_visual .wrap {float: right;; width:100%; height:100vh; position:relative; margin-top:150px;}
+#special .sp_vid {width:80%; height:800px; position:absolute; right:0;}
+#special .sp_visual .video {position:relative; width:100%; height:100%; overflow:hidden;}
 
-#special .sp_visual_title {position:absolute; top:0; left:8.5%; margin-top:150px;}
-#special .sp_visual_title h3 {display:block; font-size:45px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
+#special .sp_visual_title {position:absolute; top:2%; left:13%; margin-top:150px;}
+#special .sp_visual_title h3 {display:block; font-size:55px; writing-mode:vertical-rl; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #special .sp_bg {position:absolute; width:100%; height:800px; margin-top:150px; top:12%; left:0; background-color:#f2f1e5;}
 
-#special .contents {position:relative; width:100%; height:100%; overflow:hidden; z-index:1; margin:100px 0;}
+#special .contents {position:relative; width:100%; max-width:1920px; height:100%; overflow:hidden; z-index:1; margin:100px auto 125px;}
 #special .contents .Swiper {width:100%; height:800px; margin-top: 100px; position: relative; }	
 #special .contents .Swiper .swiper-view { width: 100%; max-width:1200px; height:760px; } 
 #special .contents .Swiper .swiper-container {height:100%; overflow:hidden;}

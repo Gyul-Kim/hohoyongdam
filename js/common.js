@@ -77,9 +77,31 @@ switch(path) {
 			);
 
 			$(".slideImg .slide_btn").append(
-				'<div class="slide_btn_bullet"></div>'
+				'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>'
 			);
+
+			// var imgList = $('.idx_main .idx_hero_img .idx_img_group .slideImg .slide_img > div');		
+			// var itemList = $('.idx_main .idx_hero_img .idx_img_group .slide_btn .slide_btn_bullet');
+			// var next = 4;
+			// $(".slide_btn").find('.slide_btn_bullet').css('width', '0',);
+			// $(".slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
+			// setInterval(imageChange, 4000);	
+		
+			// function imageChange() {
+			// 	$(imgList).css({'opacity':'0',"z-index":"0"});
+			// 	$(imgList.get(next)).css({'opacity':'1',"z-index":"0"});
+						
+			// 	$(itemList).find('.slide_btn_bullet2').css('width', '0');
+			// 	$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
+		
+			// 	next++;
+			// 	if(next == 4) {
+			// 		next = 0;
+			// 	}
+			// }
 		}
+
+		
 
 		// accommodation
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8', 
@@ -91,10 +113,11 @@ switch(path) {
 						'</div>'
 					);
 
-					// $(".idx_rooms_img .title").append(
-					// 	'<p><span>' + data.result[i]["ROOM_TYPE"]  + '</span></p>' +
-					// 	'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a>'
-					// );
+					$(".idx_rooms_img .title .txt").append(
+						'<div class="intro' + (i + 1) +'">' +
+						'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
+						'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>'
+					);
 
 					$("#index .idx_rooms_preview .swiper-image").append(
 						'<div class="swiper-slide">' + 
@@ -117,19 +140,18 @@ switch(path) {
 			for(var i = 0; i < img[3].length; i++) {
 				$("#index .idx_special .spec_swiper .swiper-image").append(
 					'<div class="swiper-slide">' + 
-						'<a href="special.html?num=' + numbering(i) + '">' +
+						'<a href="special.html">' +
 							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 							'<h5 class="special_title"><strong>' + specialList[i]["TITLE_EN"]  +' </strong><span>' + specialList[i]["CONTENT"]  + '</span></h5>' +
 						'</a>' +
 					'</div>'
 				);
 			} Swipers2(".idx_special", "auto", false, 100, false);
-
 		});
 		break;
 
 	case 'about' :
-		videoControl2(video);
+		videoControl(video);
 		for(var i = 0; i < img[2].length; i++) {
 			$("#about .abt_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
@@ -152,7 +174,7 @@ switch(path) {
 		break;
 
 	case 'rooms' :
-		// videoControl(video);
+		videoControl(video);
 		$("body").addClass("rooms_" + numbering(detailPath));
 
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8',
@@ -161,7 +183,7 @@ switch(path) {
             var arr1 = [];
 			$.each(data.result,function(key,val){
 				var sorts = val["SORT_NO"] - 1;
-				arr1.push(data.result[sorts]["TYPE_NAME"]);
+				arr1.push(data.result[sorts]["TYPE_NM"]);
 			});
 			// 중복값체크
 			var arr2 = arr1.reduce(function(a,b){
@@ -193,17 +215,19 @@ switch(path) {
 			$(".rooms_visual .rooms_visual_title").append('<h3>' + data.result[arr4[detailPath]]["TYPE_NAME"] + '</h3>');
 
 			$(".rooms_info").append(
-				// '<h3>' + data.result[arr4[detailPath]]["TYPE_NAME"] + '</h3>' +
+				'<h3>' + data.result[arr4[detailPath]]["TYPE_NM"] + '</h3>' +
 				'<ul>' +
 					'<h3>Information</h3>' +
-					'<li><span class="tl">ㆍ객실구조</span><span class="tx">'+ data.result[arr4[detailPath]]["TYPE_NAME"] +'</span></li>' +
+					'<li><span class="tl">ㆍ객실타입</span><span class="tx">'+ data.result[arr4[detailPath]]["TYPE_NAME"] +'</span></li>' +
+					'<li><span class="tl">ㆍ객실구조</span><span class="tx">'+ data.result[arr4[detailPath]]["ROOM_TYPE"] +'</span></li>' +
 					'<li><span class="tl">ㆍ인원</span><span class="tx">기준 '+ data.result[arr4[detailPath]]["ADLT_BASE_PERS"] +'명 ~ 최대 '+ data.result[arr4[detailPath]]["ADLT_MAX_PERS"] +'명</span></li>' +
 					'<li><span class="tl">ㆍ초과금액</span><span class="tx">기준인원 초과시 추가요금 발생</span></li>' +
 					'<li><span class="tl">ㆍ입실/퇴실</span><span class="tx checkInOut">체크인 15:00 / 체크아웃 11:00</span></li>' +
 					
 					// '<li class="etc"><span class="tl">특이사항</span><span class="tx">'+ ETC_DETL +'</span></li>' +
 				'</ul>' + 
-				'<ul><li><ul class="eq">' +
+				'<ul><h3>Amenity</h3><li>' +
+					'<ul class="eq">' +
 					'<li>ㆍFUll HD TV</li>' +
 					'<li>ㆍ카누 커피</li>' +
 					'<li>ㆍ커피포트</li>' +
@@ -281,7 +305,7 @@ switch(path) {
 									'<div class="swiper-wrapper swiper-image"></div>' +
 									'<div class="swiper-button-btns">' +
 										'<div class="swiper-button-prev swiper-btn"><i class="xi-angle-left"></i></div>' +
-										'<div class="swiper-button-line"><i>ㅣ</i></div>' +
+										'<div class="swiper-button-line"><i>｜</i></div>' +
 										'<div class="swiper-button-next swiper-btn"><i class="xi-angle-right"></i></div>' +
 										'<div class="swiper-pagination second"></div>' +
 									'</div>' +
@@ -298,7 +322,7 @@ switch(path) {
 									'<div class="swiper-wrapper swiper-image"></div>' +
 									'<div class="swiper-button-btns">' +
 										'<div class="swiper-button-prev swiper-btn"><i class="xi-angle-left"></i></div>' +
-										'<div class="swiper-button-line"><i>ㅣ</i></div>' +
+										'<div class="swiper-button-line"><i>｜</i></div>' +
 										'<div class="swiper-button-next swiper-btn"><i class="xi-angle-right"></i></div>' +
 										'<div class="swiper-pagination second"></div>' +
 									'</div>' +
@@ -315,6 +339,13 @@ switch(path) {
 						'</div>'
 					);
 				} Swipers(`#special .special${i + 1}`, "auto", true, 0, true);
+			}
+
+			const currentUrl2 = new URL(window.location.href);
+				if( currentUrl2.hash.length ) {
+				$('body, html').animate({
+				scrollTop:$(currentUrl2.hash).offset().top
+				},300);
 			}
 		});			
 		break;
@@ -438,18 +469,18 @@ function numbering(n) { // 이미지 넘버링 10 보다 작을때
 }
 
 //function - swipers
-function Swipers(value, view, center, Between, boolean){
-	var swiper = new Swiper(value + ' .swiper', {
-		paginationClickable: true,
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		pagination: '.swiper-pagination',
-		slidesPerView: view,
-		centeredSlides: center,
-		spaceBetween: Between,
-		loop: boolean
-	});
-}
+// function Swipers(value, view, center, Between, boolean){
+// 	var swiper = new Swiper(value + ' .swiper', {
+// 		paginationClickable: true,
+// 		nextButton: '.swiper-button-next',
+// 		prevButton: '.swiper-button-prev',
+// 		pagination: '.swiper-pagination',
+// 		slidesPerView: view,
+// 		centeredSlides: center,
+// 		spaceBetween: Between,
+// 		loop: boolean
+// 	});
+// }
 
 //function - swipers
 function Swipers3(value, view, center, Between, boolean){
@@ -477,6 +508,30 @@ function Swipers2(value, view, center, Between, boolean){
 	});
 }
 
+function Swipers(value, view, center, Between, boolean){
+	let swiper = new Swiper(value + ' .swiper', {
+		paginationClickable: true,
+		nextButton: value + ' .swiper-button-next',
+		prevButton: value + ' .swiper-button-prev',
+		pagination: value + ' .swiper-pagination',
+		slidesPerView: view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: boolean,
+		onSlideChangeStart: function (swiper) {
+			// let curr = swiper.activeIndex + 1;
+			let curr = swiper.activeIndex + 1;
+			
+			$('#index .idx_rooms .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
+			$('#index .idx_rooms .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
+
+			// $('#index .specials .text>div').css({'opacity': '0', 'visibility': 'hidden', 'transform': 'translateY(0)'});
+			// $('#index .specials .text>div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible', 'transform': 'translateY(-10px)'});
+
+		},
+	});
+}
+
 //function - video
 function videoControl(control){
 	videoScale(control);
@@ -491,18 +546,6 @@ function videoControl(control){
 		else player.play();
 	});
 }
-
-//function - video
-function videoControl2(control){
-	$(window).on("scroll",function(){
-		var thisTop = $(this).scrollTop();
-		var stopTop = $("#index .vid").offset().top;
-		var player = new Vimeo.Player(control);
-		if(thisTop > stopTop) player.play();
-		else player.pause();
-	});
-}
-
 
 //function - videocontrol
 function videoScale(control){
