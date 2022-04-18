@@ -37,7 +37,6 @@ $("header .header_sub div").hover(function(){
 });
 
 
-
 // top 버튼
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
@@ -61,142 +60,48 @@ switch(path) {
     // index
     case 'index' :
 		for(var i = 0; i < 2; i++) {
-			// $(".img1 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 1) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
-
-			// $(".img2 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 3) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
- 
-			// $(".img3 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 5) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
-
-			// $(".img4 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 7) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
-
-			// $(".slideImg .slide_btn").append(
-			// 	'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>'
-			// );
-			$("#index .idx_main").append(
-				'<div class="idx_hero_img">'
-					`<div class="Swiper special${i + 1} lt" id="special0${i + 1}">` +
-						'<div class="swiper-view">' +
-							'<div class="swiper-container swiper">' +
-								'<div class="swiper-wrapper swiper-image"></div>' +
-								'<div class="swiper-button-btns">' +
-									'<div class="swiper-button-prev swiper-btn"><i class="xi-angle-left"></i></div>' +
-									'<div class="swiper-button-line"><i>｜</i></div>' +
-									'<div class="swiper-button-next swiper-btn"><i class="xi-angle-right"></i></div>' +
-									'<div class="swiper-pagination second"></div>' +
-								'</div>' +
-							'</div>' +
-							`<div class="txt"><span>${specialObj[i]["TITLE_EN"]}</span><strong>${specialObj[i]["TITLE_KR"]}</strong><p>${specialObj[i]["CONTENT"]}</p></div>`+
-						'</div>' +
-					'</div>' +
-				'</div>'
+			$(".img1 .slide_contents").append(
+				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 1) + '.jpg) no-repeat 50% 50%"></div>'
 			);
-			
 
-			for(let j = 0; j < img[3][i]; j++) {
-				$("#special .Swiper").eq(i).find(".swiper-image").append(
-					'<div class="swiper-slide">' +
-						`<div style="background-image:url(${url}/room/${i+1}/${j+1}.jpg)"></div>` +
-					'</div>'
-				);
-			} Swipers(`#special .special${i + 1}`, "auto", true, 0, true);
-					
+			$(".img2 .slide_contents").append(
+				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 3) + '.jpg) no-repeat 50% 50%"></div>'
+			);
+ 
+			$(".img3 .slide_contents").append(
+				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 5) + '.jpg) no-repeat 50% 50%"></div>'
+			);
+
+			$(".img4 .slide_contents").append(
+				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 7) + '.jpg) no-repeat 50% 50%"></div>'
+			);
+
+			$(".slideImg .slide_btn").append(
+				'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>'
+			);
+
+			// var imgList = $('.idx_main .idx_hero_img .idx_img_group .slideImg .slide_img > div');		
+			// var itemList = $('.idx_main .idx_hero_img .idx_img_group .slide_btn .slide_btn_bullet');
+			// var next = 4;
+			// $(".slide_btn").find('.slide_btn_bullet').css('width', '0',);
+			// $(".slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
+			// setInterval(imageChange, 4000);	
+		
+			// function imageChange() {
+			// 	$(imgList).css({'opacity':'0',"z-index":"0"});
+			// 	$(imgList.get(next)).css({'opacity':'1',"z-index":"0"});
+						
+			// 	$(itemList).find('.slide_btn_bullet2').css('width', '0');
+			// 	$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
+		
+			// 	next++;
+			// 	if(next == 4) {
+			// 		next = 0;
+			// 	}
+			// }
 		}
 
-		$(function() {
-			var imgList = $('.idx_main .idx_hero_img .idx_img_group .img1 .slide_img');		
-			var itemList = $('.idx_main .idx_hero_img .idx_img_group .img1 .slide_btn .slide_btn_bullet');
-			var next = 1;
-			$(".img1 .slide_btn").find('.slide_btn_bullet').css('width', '0',);
-			$(".img1 .slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
-			setInterval(imageChange, 1000);	
 		
-			function imageChange() {
-				$(imgList).css({'transform':'scaleX(0)','transform-origin':'initial'});
-				$(imgList.get(next)).css({'transform':'scaleX(1)', 'transform-origin':'left 50%'});
-						
-				$(itemList).find('.slide_btn_bullet2').css('width', '0');
-				$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
-		
-				next++;
-				if(next == 2) {
-					next = 0;
-				}
-			}
-		});
-
-		// $(function() {
-		// 	var imgList = $('.idx_main .idx_hero_img .idx_img_group .img2 .slide_img');		
-		// 	var itemList = $('.idx_main .idx_hero_img .idx_img_group .img2 .slide_btn .slide_btn_bullet');
-		// 	var next = 1;
-		// 	$(".img1 .slide_btn").find('.slide_btn_bullet').css('width', '0',);
-		// 	$(".img1 .slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
-		// 	setInterval(imageChange, 1000);	
-		
-		// 	function imageChange() {
-		// 		$(imgList).css({'transform':'scaleX(0)','transition-delay':'0.5s','opacity':'0'});
-		// 		$(imgList.get(next)).css({'transform':'scaleY(1)','transition-delay':'0.5s','opacity':'1'});
-						
-		// 		$(itemList).find('.slide_btn_bullet2').css('width', '0');
-		// 		$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
-		
-		// 		next++;
-		// 		if(next == 2) {
-		// 			next = 0;
-		// 		}
-		// 	}
-		// });
-
-		// $(function() {
-		// 	var imgList = $('.idx_main .idx_hero_img .idx_img_group .img3 .slide_img');		
-		// 	var itemList = $('.idx_main .idx_hero_img .idx_img_group .img3 .slide_btn .slide_btn_bullet');
-		// 	var next = 1;
-		// 	$(".img1 .slide_btn").find('.slide_btn_bullet').css('width', '0',);
-		// 	$(".img1 .slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
-		// 	setInterval(imageChange, 1000);	
-		
-		// 	function imageChange() {
-		// 		$(imgList).css({'transform':'scaleX(0)','transition':'0.5s','opacity':'0'});
-		// 		$(imgList.get(next)).css({'transform':'scaleY(1)','transition':'0.5s','opacity':'1'});
-						
-		// 		$(itemList).find('.slide_btn_bullet2').css('width', '0');
-		// 		$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
-		
-		// 		next++;
-		// 		if(next == 2) {
-		// 			next = 0;
-		// 		}
-		// 	}
-		// });
-
-		// $(function() {
-		// 	var imgList = $('.idx_main .idx_hero_img .idx_img_group .img4 .slide_img');		
-		// 	var itemList = $('.idx_main .idx_hero_img .idx_img_group .img4 .slide_btn .slide_btn_bullet');
-		// 	var next = 1;
-		// 	$(".img1 .slide_btn").find('.slide_btn_bullet').css('width', '0',);
-		// 	$(".img1 .slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
-		// 	setInterval(imageChange, 1000);	
-		
-		// 	function imageChange() {
-		// 		$(imgList).css({'transform':'scaleX(0)','transition':'0.5s','opacity':'0'});
-		// 		$(imgList.get(next)).css({'transform':'scaleY(1)','transition':'0.5s','opacity':'1'});
-						
-		// 		$(itemList).find('.slide_btn_bullet2').css('width', '0');
-		// 		$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
-		
-		// 		next++;
-		// 		if(next == 2) {
-		// 			next = 0;
-		// 		}
-		// 	}
-		// });
 
 		// accommodation
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8', 
