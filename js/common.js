@@ -15,12 +15,11 @@ $(function(){
     let detailPath = ((location.href.substr(location.href.lastIndexOf("=") + 1)).slice(0, 2) - 1 + 1) - 1; //detail Path
 
 // header
-$("header .header_sub div").hover(function(){
-	var ght = $(".header_sub div ul li").height() + 1;
+$("header .header_sub > div").hover(function(){
+	var ght = $(".header_sub > div > ul li").height() + 1;
 	$(this).addClass("active");
 	$(this).find("ul li").each(function(e){
 		$(this).parent("ul").css({
-			"transition":" 0.3s ease-in-out",
 			"height":ght * (e + 1),
 			"opacity":"1","z-index":"1",
 			"transition":"0.5s"
@@ -35,6 +34,15 @@ $("header .header_sub div").hover(function(){
 		"transition":"0.5s"
 	});
 });
+
+// $("header .header_sub > div").hover(function(){
+// 	$(this).addClass("active");
+// 	$(this).find("ul").stop(true,true).slideDown(350);
+// },function(){
+// 	$(this).removeClass("active");
+// 	$(this).find("ul").stop(true,true).slideUp(350);
+// });
+
 
 
 // top 버튼
@@ -59,49 +67,87 @@ switch(path) {
 
     // index
     case 'index' :
-		for(var i = 0; i < 2; i++) {
-			$(".img1 .slide_contents").append(
-				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 1) + '.jpg) no-repeat 50% 50%"></div>'
-			);
+		for(var i = 1; i < 4; i++) {
+			// $(".img1 .slide_contents").append(
+			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 1) + '.jpg) no-repeat 50% 50%"></div>'
+			// );
 
-			$(".img2 .slide_contents").append(
-				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 3) + '.jpg) no-repeat 50% 50%"></div>'
-			);
+			// $(".img2 .slide_contents").append(
+			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 3) + '.jpg) no-repeat 50% 50%"></div>'
+			// );
  
-			$(".img3 .slide_contents").append(
-				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 5) + '.jpg) no-repeat 50% 50%"></div>'
-			);
+			// $(".img3 .slide_contents").append(
+			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 5) + '.jpg) no-repeat 50% 50%"></div>'
+			// );
 
-			$(".img4 .slide_contents").append(
-				'<div class="slide_img"><div style="background:url(' + url + '/main/' + (i + 7) + '.jpg) no-repeat 50% 50%"></div>'
-			);
+			// $(".img4 .slide_contents").append(
+			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 7) + '.jpg) no-repeat 50% 50%"></div>'
+			// );
 
-			$(".slideImg .slide_btn").append(
-				'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>'
-			);
+			// $(".slideImg .slide_btn").append(
+			// 	'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>'
+			// );
 
-			// var imgList = $('.idx_main .idx_hero_img .idx_img_group .slideImg .slide_img > div');		
-			// var itemList = $('.idx_main .idx_hero_img .idx_img_group .slide_btn .slide_btn_bullet');
-			// var next = 4;
-			// $(".slide_btn").find('.slide_btn_bullet').css('width', '0',);
-			// $(".slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
-			// setInterval(imageChange, 4000);	
-		
-			// function imageChange() {
-			// 	$(imgList).css({'opacity':'0',"z-index":"0"});
-			// 	$(imgList.get(next)).css({'opacity':'1',"z-index":"0"});
-						
-			// 	$(itemList).find('.slide_btn_bullet2').css('width', '0');
-			// 	$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
-		
-			// 	next++;
-			// 	if(next == 4) {
-			// 		next = 0;
-			// 	}
-			// }
+			
 		}
+	
+
+		for(let j = 0; j < 2; j++) {
+			$(".idx_main .img1 .slide_contents .swiper-image").append(
+				'<div class="swiper-slide slide_img">' +
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%"></div>' +					
+				'</div>'
+			);
+		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+
+		for(let j = 0; j < 2; j++) {
+			$(".idx_main .img2 .slide_contents .swiper-image").append(
+				'<div class="swiper-slide slide_img">' +
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 3) + '.jpg) no-repeat 50% 50%"></div>' +					
+				'</div>'
+			);
+		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+
+		for(let j = 0; j < 2; j++) {
+			$(".idx_main .img3 .slide_contents .swiper-image").append(
+				'<div class="swiper-slide slide_img">' +
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 5) + '.jpg) no-repeat 50% 50%"></div>' +					
+				'</div>'
+			);
+		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+
+		for(let j = 0; j < 2; j++) {
+			$(".idx_main .img4 .slide_contents .swiper-image").append(
+				'<div class="swiper-slide slide_img">' +
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 7) + '.jpg) no-repeat 50% 50%"></div>' +					
+				'</div>'
+			);
+		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
 
 		
+
+		// $(function() {
+		// 	var imgList = $('.idx_main .idx_hero_img .idx_img_group .img1 .slide_img');		
+		// 	var itemList = $('.idx_main .idx_hero_img .idx_img_group .img1 .slide_btn .slide_btn_bullet');
+		// 	var next = 1;
+		// 	$(".img1 .slide_btn").find('.slide_btn_bullet').css('width', '0',);
+		// 	$(".img1 .slide_btn").eq(0).find('.slide_btn_bullet2').css('width', '20px');
+		// 	setInterval(imageChange, 1000);	
+		
+		// 	function imageChange() {
+		// 		$(imgList).css({'transform':'scaleX(0)','transform-origin':'initial'});
+		// 		$(imgList.get(next)).css({'transform':'scaleX(1)', 'transform-origin':'left 50%'});
+						
+		// 		$(itemList).find('.slide_btn_bullet2').css('width', '0');
+		// 		$(itemList.get(next)).find('.slide_btn_bullet2').css('width', '20px');
+		
+		// 		next++;
+		// 		if(next == 2) {
+		// 			next = 0;
+		// 		}
+		// 	}
+		// });
+
 
 		// accommodation
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8', 
@@ -124,7 +170,7 @@ switch(path) {
 							'<div style="background:url(' + url + '/room/' + (i + 1) + '/2.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 						'</div>'
 					);
-				} Swipers(".idx_rooms", "auto", true, 100, false);
+				} Swipers(".idx_rooms", "auto", true, 100, false, 0);
 		});
 
 		// ability 
@@ -140,13 +186,13 @@ switch(path) {
 			for(var i = 0; i < img[3].length; i++) {
 				$("#index .idx_special .spec_swiper .swiper-image").append(
 					'<div class="swiper-slide">' + 
-						'<a href="special.html">' +
+						'<a href="special.html#special0' + (i + 1) +'">' +
 							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 							'<h5 class="special_title"><strong>' + specialList[i]["TITLE_EN"]  +' </strong><span>' + specialList[i]["CONTENT"]  + '</span></h5>' +
 						'</a>' +
 					'</div>'
 				);
-			} Swipers2(".idx_special", "auto", false, 100, false);
+			} Swipers2(".idx_special", "auto", false, 100, true);
 		});
 		break;
 
@@ -267,17 +313,18 @@ switch(path) {
 						'</div>'
 					);
 
-					// $(".idx_rooms_img .title").append(
-					// 	'<p><span>' + data.result[i]["ROOM_TYPE"]  + '</span></p>' +
-					// 	'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a>'
-					// );
+					$("#rooms .title .txt").append(
+						'<div class="intro' + (i + 1) +'">' +
+						'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
+						'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>'
+					);
 
 					$("#rooms .rooms_menu_preview .swiper-image").append(
 						'<div class="swiper-slide">' + 
 							'<div style="background:url(' + url + '/room/' + (i + 1) + '/2.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 						'</div>'
 					);
-				} Swipers3(".rooms_menu_img", "auto", true, 100, false);
+				} Swipers3(".rooms_menu_img", "auto", true, 100, false, 0);
 			});
 
 		break;
@@ -345,7 +392,7 @@ switch(path) {
 				if( currentUrl2.hash.length ) {
 				$('body, html').animate({
 				scrollTop:$(currentUrl2.hash).offset().top
-				},300);
+				},2000);
 			}
 		});			
 		break;
@@ -483,19 +530,38 @@ function numbering(n) { // 이미지 넘버링 10 보다 작을때
 // }
 
 //function - swipers
-function Swipers3(value, view, center, Between, boolean){
+function Swipers3(value, view, center, Between, boolean, touch){
 	var swiper = new Swiper(value + ' .swiper3', {
+		effect :'fade',
 		paginationClickable: true,
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
-		pagination: '.swiper-pagination',
+		pagination: '.swiper3 .swiper-pagination',
 		slidesPerView: view,
 		centeredSlides: center,
 		spaceBetween: Between,
-		loop: boolean
+		loop: boolean,
+		touchRatio:touch,
+
+		onSlideChangeStart: function (swiper) {
+			// let curr = swiper.activeIndex + 1;
+			let curr = swiper.activeIndex + 1;
+
+		
+			$('#rooms .rooms_menu_img .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
+			$('#rooms .rooms_menu_img .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
+
+			// $('#index .specials .text>div').css({'opacity': '0', 'visibility': 'hidden', 'transform': 'translateY(0)'});
+			// $('#index .specials .text>div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible', 'transform': 'translateY(-10px)'});
+
+		},
 	});
 }
 
+$('.parallax-window').parallax({imageSrc: '/path/to/image.jpg'});
+
+
+// idx special
 function Swipers2(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + ' .swiper2', {
 		paginationClickable: true,
@@ -504,11 +570,30 @@ function Swipers2(value, view, center, Between, boolean){
 		slidesPerView: 3.5,
 		centeredSlides: center,
 		spaceBetween: Between,
-		loop: boolean
+		loop: boolean,
 	});
 }
 
-function Swipers(value, view, center, Between, boolean){
+function Swipers4(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + '.Swiper .swiper', {
+		paginationClickable: true,
+		slidesPerView:view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: true,
+		touchRatio:false,
+		parallax:true,
+		parallaxDirection  :'right',
+		direction:'horizontal',
+		speed:2300,
+		autoplay: {
+			delay: 5500,
+		  },
+	});
+}
+
+
+function Swipers(value, view, center, Between, boolean,touch){
 	let swiper = new Swiper(value + ' .swiper', {
 		paginationClickable: true,
 		nextButton: value + ' .swiper-button-next',
@@ -518,16 +603,13 @@ function Swipers(value, view, center, Between, boolean){
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean,
+		touchRatio:touch,
 		onSlideChangeStart: function (swiper) {
 			// let curr = swiper.activeIndex + 1;
 			let curr = swiper.activeIndex + 1;
 			
 			$('#index .idx_rooms .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
 			$('#index .idx_rooms .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
-
-			// $('#index .specials .text>div').css({'opacity': '0', 'visibility': 'hidden', 'transform': 'translateY(0)'});
-			// $('#index .specials .text>div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible', 'transform': 'translateY(-10px)'});
-
 		},
 	});
 }

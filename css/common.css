@@ -8,6 +8,10 @@ body {min-width:1000px; position:relative;}
 section {width:100%; height:100%;}
 section,.section {position:relative; width:100%;}
 *, ::after, ::before {border-style:solid; border-width:0; box-sizing:0;}
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
 
 /* images */
 #about .abt_vid #MyVideo  {background:url(http://gonylab8.speedgabia.com/hohoyongdam/temp/thumbnail/exterior.jpg) no-repeat 50% 50%; background-size:contain;} 
@@ -96,13 +100,14 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_main .idx_hero_img .idx_img_group {position:relative; width:100%; height:auto; display:flex; align-items:flex-start; flex-flow:row wrap; justify-content:space-between;}
 #index .idx_main .idx_img_group .slideImg {position:relative; width:100%;}
 #index .idx_main .idx_img_group .slideImg .slide_contents {height:calc(100% - 40px); padding-top:0; overflow: hidden; position: relative; width:100%;}
-#index .idx_main .idx_img_group .slideImg .slide_contents .slide_img {width:100%; height:100%; position: absolute; top:0; left:0;}
+#index .idx_main .idx_img_group .slideImg .slide_contents .slide_img {width:100%; height:100%; position:relative; top:0; left:0; transition:transform 0.5s ease-in-out;}
 #index .idx_main .idx_img_group .slideImg .slide_contents .slide_img > div {background-size:cover; width:100%; height:100%;}
 
 #index .idx_main .idx_img_group .slideImg.img1 {width:50%; height:100vh;}
 #index .idx_main .idx_img_group .slideImg.img2 {width:calc(50% - 220px); height:calc(50vh + 322px); margin-top:calc(50vh - 202px); padding-bottom:40px;}
 #index .idx_main .idx_img_group .slideImg.img3 {width:calc(50% - 300px); height:calc(100vh - 200px);}
 #index .idx_main .idx_img_group .slideImg.img4 {width:calc(50% + 80px); height:calc(100vh - 160px); margin:100px 0 0 120px; padding-bottom:40px;}
+
 
 #index .idx_main .idx_img_group  .slide_btn {width:100%; height:40px; position:relative; padding:10px 0 0; font-size:0; text-align: left; line-height:0; letter-spacing:0;}
 #index .idx_main .idx_img_group .img1 .slide_btn, .img3 .slide_btn {text-align:right;}
@@ -230,16 +235,19 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_menu {height:800px; top:170px; position: relative; max-width:1920px; margin:0 auto 300px;}
 #rooms .rooms_menu::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
 #rooms .rooms_menu .rooms_menu_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
-#rooms .rooms_menu .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px);}
+#rooms .rooms_menu .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px); height:700px; position:relative;}
 #rooms .rooms_menu .title span, .rooms_menu .title strong, .rooms_menu  .title p {display:block;}
 #rooms .rooms_menu .title strong {font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #rooms .rooms_menu .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
-#rooms .rooms_menu .title p {font-size:15px; color:#222; line-height:1.75;}
-#rooms .rooms_menu .title p > span:first-child {margin-bottom:30px;}
-#rooms .rooms_menu .title a {display:block; font-size:16.5px; margin-top:27px;}
+#rooms .rooms_menu .title .txt {position:absolute; top:150px; left:0; width:450px; height:250px;}
+#rooms .rooms_menu .title .txt div {visibility:hidden; opacity:0; transition:0.5s; position:absolute; top:0; left:0;}
+#rooms .rooms_menu .title .txt div:first-of-type {visibility:visible; opacity:1; transition:0.5s;}
+#rooms .rooms_menu .title .txt p {font-size:15px; color:#222; line-height:1.75;}
+#rooms .rooms_menu .title .txt p > span:first-child {margin-bottom:30px;}
+#rooms .rooms_menu .title .txt a {display:block; font-size:16.5px; margin-top:70px;}
 #rooms .rooms_menu .rooms_menu_swiper {width:calc(50% + 210px); position:absolute; top:100px; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
 #rooms .rooms_menu .rooms_menu_swiper .swiper-view {height:610px;}
-#rooms .rooms_menu_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position: relative; width:400px;}
+#rooms .rooms_menu_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position:absolute; width:400px; bottom:0;}
 #rooms .rooms_menu_preview .swiper-view {height:250px!important;}
 
 /* special */

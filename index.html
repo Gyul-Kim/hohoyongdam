@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="css/common.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="js/parallax.min.js"></script>
+<script src="js/parallax.js"></script>
 <script src="js/swiper.js"></script>
 <script src="js/modify.js" defer></script>
 <script src="js/common.js" defer></script>
@@ -29,13 +31,21 @@
       <div class="idx_main">
          <div class="idx_hero_img">
             <div class="idx_img_group">
-               <div class="slideImg img1">
-                  <div class="slide_contents"></div>
+               <div class="slideImg img1 Swiper parallax-window" data-parallax="scroll" data-image-src="/path/to/image.jpg">
+                  <div class="slide_contents swiper-view">
+                     <div class="swiper-container swiper">
+                        <div class="swiper-wrapper swiper-image"></div>
+                     </div> 
+                  </div>
                   <div class="slide_btn"></div>
                </div>
 
-               <div class="slideImg img2">
-                  <div class="slide_contents"></div>
+               <div class="slideImg img2 Swiper">
+                  <div class="slide_contents swiper-view">
+                     <div class="swiper-container swiper">
+                        <div class="swiper-wrapper swiper-image"></div>
+                     </div> 
+                  </div>
                   <div class="slide_btn"></div>
                </div>
             </div>
@@ -43,13 +53,21 @@
 
          <div class="idx_hero_img">
             <div class="idx_img_group">
-               <div class="slideImg img3">
-                  <div class="slide_contents"></div>
+               <div class="slideImg img3 Swiper">
+                  <div class="slide_contents swiper-view">
+                     <div class="swiper-container swiper">
+                        <div class="swiper-wrapper swiper-image"></div>
+                     </div> 
+                  </div>
                   <div class="slide_btn"></div>
                </div>
 
-               <div class="slideImg img4">
-                  <div class="slide_contents"></div>
+               <div class="slideImg img4 Swiper">
+                  <div class="slide_contents swiper-view">
+                     <div class="swiper-container swiper">
+                        <div class="swiper-wrapper swiper-image"></div>
+                     </div> 
+                  </div>
                   <div class="slide_btn"></div>
                </div>
             </div>
