@@ -29,7 +29,7 @@ section,.section {position:relative; width:100%;}
 .header .header_sub {position:absolute; top:70px; right:0; display:flex; width:40%; z-index:10;  z-index:100;}
 .header .header_sub div {flex:1; margin-right:9px; height:40px;}
 .header .header_sub div a {display:block; text-align:center; font-size:16px; padding:11px 0; text-shadow: 2px 2px 2px rgb(0 0 0 / 15%);}
-.header .header_sub div.active {background-color:#e6e3db; border-top:1px solid #c8c1b0;}
+.header .header_sub div.on {background-color:#e6e3db; border-top:1px solid #c8c1b0;}
 .header .header_sub div ul li a {display:block; font-size:14px; padding:10px 0; margin-top:5px; background-color:#e6e3db; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 .header .header_sub div ul li a:hover {background-color:#c8c1b0;}
 .header .header_sub div ul li a:hover span.kr {display:block;}
@@ -38,7 +38,7 @@ section,.section {position:relative; width:100%;}
 .header .header_sub div.header_sub_modelhouse, .header .header_sub div.header_sub_catalog {flex:1.5;}
 .header .header_sub div.header_sub_reserve {flex:1.25;}
 
-.header .header_sub ul {opacity:0; z-index:0;}
+.header .header_sub ul {display:none;}
 .header .header_sub ul li span.kr {display:none;}
 .header .header_sub ul li:first-child {margin-top:7px;}
 
@@ -100,7 +100,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_main .idx_hero_img .idx_img_group {position:relative; width:100%; height:auto; display:flex; align-items:flex-start; flex-flow:row wrap; justify-content:space-between;}
 #index .idx_main .idx_img_group .slideImg {position:relative; width:100%;}
 #index .idx_main .idx_img_group .slideImg .slide_contents {height:calc(100% - 40px); padding-top:0; overflow: hidden; position: relative; width:100%;}
-#index .idx_main .idx_img_group .slideImg .slide_contents .slide_img {width:100%; height:100%; position:relative; top:0; left:0; transition:transform 0.5s ease-in-out;}
+#index .idx_main .idx_img_group .slideImg .slide_contents .slide_img {width:100%; height:100%; position:relative; top:0; left:0;}
 #index .idx_main .idx_img_group .slideImg .slide_contents .slide_img > div {background-size:cover; width:100%; height:100%;}
 
 #index .idx_main .idx_img_group .slideImg.img1 {width:50%; height:100vh;}
@@ -121,7 +121,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 
 #index .idx_rooms {margin-top:180px; height:800px; padding:100px 0; position: relative;}
 #index .idx_rooms::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
-#index .idx_rooms .idx_rooms_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
+#index .idx_rooms .idx_rooms_img {position: relative; width:85%; height:auto; max-width:1950px; margin: 0 auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
 #index .idx_rooms .idx_accommodation {display:flex; width:100%; height:auto;}
 #index .idx_rooms .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:700px; width:calc(50% - 210px);}
 #index .idx_rooms .title span, .idx_rooms .title strong, .idx_rooms .title strong, .idx_rooms .title p {display:block;}
@@ -130,18 +130,22 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_rooms .title .txt {position:absolute; top:150px; left:0; width:450px; height:250px;}
 #index .idx_rooms .title .txt div {visibility:hidden; opacity:0; transition:0.5s; position:absolute; top:0; left:0;}
 #index .idx_rooms .title .txt div:first-of-type {visibility:visible; opacity:1; transition:0.5s;}
-#index .idx_rooms .title .txt p {font-size:15px; color:#222; line-height:1.75;}
+#index .idx_rooms .title .txt p {font-size:14px; color:#222; line-height:1.75;}
 #index .idx_rooms .title .txt p > span:first-child {margin-bottom:30px;}
-#index .idx_rooms .title .txt a {display:block; font-size:16.5px; margin-top:70px;}
+#index .idx_rooms .title .txt a {display:inline-block; font-size:16.5px; margin-top:70px; border-top:1px solid rgba(0,0,0,.1); color:#000; line-height:24px; padding:10px 50px 0 0; position: relative; text-decoration:none;}
+#index .idx_rooms .title .txt a::before {content:""; background:#000; display:block; height:1px; position:absolute; top:-1px; left:0; transform:scaleX(0); transform-origin:left center; transition:transform .5s cubic-bezier(.19,1,.22,1); width:100%;}
+#index .idx_rooms .title .txt a::after {content:""; width:31px; height:6px; display:block; position:absolute; top:19px; right:0; background:url(../images/arrow_bk.png) no-repeat 100% 100%; background-size:120px;}
+#index .idx_rooms .title .txt a:hover::before {transform:scaleX(1); transform:right center;}
+#index .idx_rooms .title .txt a:hover::after {animation:arrow_hover 1s cubic-bezier(.19,1,.22,1) 0s infinite; margin-right:2px; transition:0.5s;}
 
 #index .idx_rooms .idx_acc {width:calc(50% + 210px); position:absolute; top:0; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
 #index .idx_rooms .idx_acc .swiper-view {height:80vh;}
 
 #index .idx_rooms_preview {left:0; bottom:0; ; right:auto; height:auto; overflow: hidden; position:absolute; width:400px;}
-#index .idx_rooms_preview .swiper-view {height:300px!important;}
+#index .idx_rooms_preview .swiper-view {height:300px;}
 
 
-#index .idx_special {position: relative; width:85%; height:auto; margin:200px 0 0 auto;}
+#index .idx_special {position: relative; width:85%; height:auto; max-width:1950px; margin:200px auto 0;}
 #index .idx_special h3 {width:150px; height:auto; position:absolute; top:0; left:0; z-index:10;}
 #index .idx_special h3 strong {display:block; font-size:30px; margin-bottom:20px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 #index .idx_special h3 span {display:block; font-size:15px; color:#8b8b8b;}
@@ -151,13 +155,16 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide {width:calc(29% + 7px);}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a {display:block;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a div {width:100%; height:600px;}
+#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a h5::before {content:""; background-color:#444; display:block; position:absolute; width:100%; height:4px; left:0; top:0; transform:scaleX(0); transform-origin:left center; transition:transform .5s cubic-bezier(.19,1,.22,1);}
+#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a:hover h5::before {transform:scaleX(1); transform:right center;}
+#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 {position:relative; padding:20px 50px 0 0;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 strong {display:block; font-size:20px; color:#000; margin:10px 0 20px;}
-#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 span {display:block; font-size:15px; color:#333;}
+#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 span {display:block; font-size:15px; color:#333; line-height:1.5;}
 
-#index .idx_special .Swipers .swiper-button-next {position:absolute; width:55px; height:55px; right:245px; background-image:url(../images/next.png);}
+#index .idx_special .Swipers .swiper-button-next {position:absolute; width:55px; height:55px; right:25%; background-image:url(../images/next.png);}
 #index .idx_special .Swipers .swiper-button-prev {position:absolute; width:55px; height:55px; left:0; background-image:url(../images/prev.png);}
 
-#index .idx_vid {position:relative; display:flex; margin-top:200px; padding:100px 0;}
+#index .idx_vid {position:relative; display:flex; margin:200px auto 0; max-width:1950px; padding:100px 0;}
 #index .idx_vid .vid_left {width:100%; flex:2; height:auto; position:relative;}
 #index .idx_vid .vid_left .vid_mov {display:flex; position:relative; overflow:hidden; flex:0 1 calc(50% + 210px); flex-basis:calc(50% + 210px); flex-flow:column nowrap; justify-content:flex-start; order:1;}
 #index .idx_vid .vid_left .vid_mov iframe {display:block; width:100%; height:600px;}
@@ -244,7 +251,12 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_menu .title .txt div:first-of-type {visibility:visible; opacity:1; transition:0.5s;}
 #rooms .rooms_menu .title .txt p {font-size:15px; color:#222; line-height:1.75;}
 #rooms .rooms_menu .title .txt p > span:first-child {margin-bottom:30px;}
-#rooms .rooms_menu .title .txt a {display:block; font-size:16.5px; margin-top:70px;}
+#rooms .rooms_menu .title .txt a {display:inline-block; font-size:16.5px; margin-top:70px; border-top:1px solid rgba(0,0,0,.1); color:#000; line-height:24px; padding:10px 50px 0 0; position: relative; text-decoration:none;}
+#rooms .rooms_menu .title .txt a::before {content:""; background:#000; display:block; height:1px; position:absolute; top:-1px; left:0; transform:scaleX(0); transform-origin:left center; transition:transform .5s cubic-bezier(.19,1,.22,1); width:100%;}
+#rooms .rooms_menu .title .txt a::after {content:""; width:31px; height:6px; display:block; position:absolute; top:19px; right:0; background:url(../images/arrow_bk.png) no-repeat 100% 100%; background-size:120px;}
+#rooms .rooms_menu .title .txt a:hover::before {transform:scaleX(1); transform:right center;}
+#rooms .rooms_menu .title .txt a:hover::after {animation:arrow_hover 1s cubic-bezier(.19,1,.22,1) 0s infinite; margin-right:2px; transition:0.5s;}
+
 #rooms .rooms_menu .rooms_menu_swiper {width:calc(50% + 210px); position:absolute; top:100px; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
 #rooms .rooms_menu .rooms_menu_swiper .swiper-view {height:610px;}
 #rooms .rooms_menu_preview {left:0; margin:60px auto 0 0; right:auto; height:auto; overflow: hidden; position:absolute; width:400px; bottom:0;}

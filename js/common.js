@@ -16,34 +16,16 @@ $(function(){
 
 // header
 $("header .header_sub > div").hover(function(){
-	var ght = $(".header_sub > div > ul li").height() + 1;
-	$(this).addClass("active");
-	$(this).find("ul li").each(function(e){
-		$(this).parent("ul").css({
-			"height":ght * (e + 1),
-			"opacity":"1","z-index":"1",
-			"transition":"0.5s"
-		});	
-	});
+	$(this).addClass("on");
 },function(){
-	$(this).removeClass("active");
-	$("header .header_sub ul").css({
-		"height":0,
-		"opacity":"0",
-		"z-index":"0",
-		"transition":"0.5s"
-	});
+	$(this).removeClass("on");
 });
 
-// $("header .header_sub > div").hover(function(){
-// 	$(this).addClass("active");
-// 	$(this).find("ul").stop(true,true).slideDown(350);
-// },function(){
-// 	$(this).removeClass("active");
-// 	$(this).find("ul").stop(true,true).slideUp(350);
-// });
-
-
+let gnbLi = $('header .header_sub > div');
+gnbLi.hover(function() {
+	$(this).find('ul').stop().slideToggle();
+	$(this).find('header ul').toggleClass('active');
+});
 
 // top 버튼
 window.onscroll = function() {scrollFunction()};
@@ -61,36 +43,75 @@ $("#top-btn").on("click", function() {
 	$("html,body").animate({scrollTop:0}, 1000, "swing");
 	return false;
 });
+
+// index_parallax - vertical
+function SwipersV1(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + '.img1 .swiper', {
+		paginationClickable: true,
+		slidesPerView:view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: true,
+		touchRatio:false,
+		direction:'horizontal',
+		speed:1500,
+		autoplay: 3000,
+	});
+}
+
+function SwipersV2(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + '.img2 .swiper', {
+		paginationClickable: true,
+		slidesPerView:view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: true,
+		touchRatio:false,
+		direction:'horizontal',
+		speed:1500,
+		autoplay:3000,
+	});
+}
+
+function SwipersV3(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + '.img3 .swiper', {
+		paginationClickable: true,
+		slidesPerView:view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: true,
+		touchRatio:false,
+		direction:'horizontal',
+		speed:1500,
+		autoplay:3000,
+	});
+}
+
+function SwipersV4(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + '.img4 .swiper', {
+		paginationClickable: true,
+		slidesPerView:view,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: true,
+		touchRatio:false,
+		direction:'horizontal',
+		speed:1500,
+		autoplay:3000,
+	});
+}
+
+
 // body
 switch(path) {
     case '' :
 
     // index
     case 'index' :
-		for(var i = 1; i < 4; i++) {
-			// $(".img1 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 1) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
-
-			// $(".img2 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 3) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
- 
-			// $(".img3 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 5) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
-
-			// $(".img4 .slide_contents").append(
-			// 	'<div class="slide_img" style="background:url(' + url + '/main/' + (i + 7) + '.jpg) no-repeat 50% 50%"></div>'
-			// );
-
-			// $(".slideImg .slide_btn").append(
-			// 	'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>'
-			// );
-
-			
-		}
-	
+		$(".slideImg .slide_btn").append(
+			'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>' + 
+			'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>' 
+		);
 
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img1 .slide_contents .swiper-image").append(
@@ -98,15 +119,15 @@ switch(path) {
 					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%"></div>' +					
 				'</div>'
 			);
-		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+		} SwipersV1(`.idx_main .img1`, "auto", true, 0, true);
 
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img2 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 3) + '.jpg) no-repeat 50% 50%"></div>' +					
+					'<div data-swiper-parallax-x="100%" data-swiper-autoplay="10000" style="background:url(' + url + '/main/' + (j + 3) + '.jpg) no-repeat 50% 50%"></div>' +					
 				'</div>'
 			);
-		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+		} SwipersV2(`.idx_main .img2`, "auto", true, 0, true);
 
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img3 .slide_contents .swiper-image").append(
@@ -114,7 +135,7 @@ switch(path) {
 					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 5) + '.jpg) no-repeat 50% 50%"></div>' +					
 				'</div>'
 			);
-		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+		} SwipersV3(`.idx_main .img3`, "auto", true, 0, true);
 
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img4 .slide_contents .swiper-image").append(
@@ -122,7 +143,7 @@ switch(path) {
 					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 7) + '.jpg) no-repeat 50% 50%"></div>' +					
 				'</div>'
 			);
-		} Swipers4(`.idx_main .Swiper`, "auto", true, 0, true);
+		} SwipersV4(`.idx_main .img4`, "auto", true, 0, true);
 
 		
 
@@ -192,7 +213,7 @@ switch(path) {
 						'</a>' +
 					'</div>'
 				);
-			} Swipers2(".idx_special", "auto", false, 100, true);
+			} Swipers2(".idx_special", "auto", false, 40, true);
 		});
 		break;
 
@@ -558,40 +579,18 @@ function Swipers3(value, view, center, Between, boolean, touch){
 	});
 }
 
-$('.parallax-window').parallax({imageSrc: '/path/to/image.jpg'});
-
-
 // idx special
 function Swipers2(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + ' .swiper2', {
 		paginationClickable: true,
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
-		slidesPerView: 3.5,
+		slidesPerView: 4,
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean,
 	});
 }
-
-function Swipers4(value, view, center, Between, boolean){
-	var swiper = new Swiper(value + '.Swiper .swiper', {
-		paginationClickable: true,
-		slidesPerView:view,
-		centeredSlides: center,
-		spaceBetween: Between,
-		loop: true,
-		touchRatio:false,
-		parallax:true,
-		parallaxDirection  :'right',
-		direction:'horizontal',
-		speed:2300,
-		autoplay: {
-			delay: 5500,
-		  },
-	});
-}
-
 
 function Swipers(value, view, center, Between, boolean,touch){
 	let swiper = new Swiper(value + ' .swiper', {
