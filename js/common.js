@@ -101,6 +101,18 @@ function SwipersV4(value, view, center, Between, boolean){
 	});
 }
 
+function SwipersMobile(value, view, center, Between, boolean){
+	var swiper = new Swiper(value + ' .swiper4', {
+		paginationClickable: true,
+		pagination: value + ' .swiper-pagination',
+
+		slidesPerView: 1,
+		centeredSlides: center,
+		spaceBetween: Between,
+		loop: boolean,
+	});
+}
+
 
 // body
 switch(path) {
@@ -113,10 +125,18 @@ switch(path) {
 			'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>' 
 		);
 
+		for(let i = 0; i < 4; i++) {
+			$(".idx_main .idx_swipers .swiper-container .swiper-image").append(
+				'<div class="swiper-slide">' +
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (i + 4) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
+				'</div>'
+			);
+		} SwipersMobile('.idx_swipers', "auto", true, 0, true);
+
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img1 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%"></div>' +					
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV1(`.idx_main .img1`, "auto", true, 0, true);
@@ -124,7 +144,7 @@ switch(path) {
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img2 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" data-swiper-autoplay="10000" style="background:url(' + url + '/main/' + (j + 3) + '.jpg) no-repeat 50% 50%"></div>' +					
+					'<div data-swiper-parallax-x="100%" data-swiper-autoplay="10000" style="background:url(' + url + '/main/' + (j + 3) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV2(`.idx_main .img2`, "auto", true, 0, true);
@@ -132,7 +152,7 @@ switch(path) {
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img3 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 5) + '.jpg) no-repeat 50% 50%"></div>' +					
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 5) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV3(`.idx_main .img3`, "auto", true, 0, true);
@@ -140,10 +160,12 @@ switch(path) {
 		for(let j = 0; j < 2; j++) {
 			$(".idx_main .img4 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 7) + '.jpg) no-repeat 50% 50%"></div>' +					
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 7) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV4(`.idx_main .img4`, "auto", true, 0, true);
+
+		
 
 		
 
@@ -482,6 +504,7 @@ $.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/4',	//User 
 				'<div class="ft_top">' +
 					'<div class="footerWrap">' +
 						'<div class="ft_txt">HOHO YONGDAM</div>' +
+						'<div class="ft_logo_m"><a href="index.html"><img src="images/ft_logo.png" width="100%" height="auto"></a></div>' +
 						'<ul class="ft_menu">' +
 							'<li><a href="about.html">HOHO YONGDAM</a></li>' +
 							'<li><a href="rooms.html?num=01">ACCOMMODATION</a></li>' +
@@ -489,7 +512,7 @@ $.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/4',	//User 
 							'<li><a href="reserve.html?reserve=rv">RESERVATION</a></li>' +
 						'</ul>' +
 						'<div class="ft_sns">' +
-							'<div class="sns_01"><a href="https://www.instagram.com/haegeurami_/" target="_blank"><img src="images/sns_01.png" alt="인스타그램" width="30" height="auto"></a></div>' +
+							'<div class="sns_01"><a href="#" target="_blank"><img src="images/sns_01.png" alt="인스타그램" width="30" height="auto"></a></div>' +
 							'<div class="sns_02"><a href="#"><img src="images/sns_02.png" alt="블로그" width="30" height="auto"></a></div>' +
 							'<div class="sns_02"><a href="#"><img src="images/sns_03.png" alt="페이스북" width="30" height="auto"></a></div>' +
 						'</div>' +
@@ -568,7 +591,6 @@ function Swipers3(value, view, center, Between, boolean, touch){
 			// let curr = swiper.activeIndex + 1;
 			let curr = swiper.activeIndex + 1;
 
-		
 			$('#rooms .rooms_menu_img .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
 			$('#rooms .rooms_menu_img .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
 
@@ -589,6 +611,11 @@ function Swipers2(value, view, center, Between, boolean){
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean,
+		breakpoints: {
+			1000: {
+				slidesPerView: 1.5,
+			}
+		}
 	});
 }
 

@@ -4,7 +4,7 @@
 @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
 
 /* common */
-body {min-width:1000px; position:relative;}
+body {width:100%; position:relative;}
 section {width:100%; height:100%;}
 section,.section {position:relative; width:100%;}
 *, ::after, ::before {border-style:solid; border-width:0; box-sizing:0;}
@@ -52,6 +52,7 @@ footer {background-color:#262729; color:#fff;}
 footer .ft_top {height:120px; border-bottom:1px solid #e2e2e2; width:100%; position:relative;}
 footer .ft_top .footerWrap, footer .ft_bottom .footerWrap  {display:flex;}
 footer .ft_top .footerWrap {max-width:1500px; margin:0 auto;}
+footer .ft_top .ft_logo_m {display:none;}
 footer .ft_bottom {height:240px; width:100%; position:relative;}
 footer .ft_bottom .footerWrap {max-width:1500px; margin:0 auto;}
 
@@ -84,7 +85,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 .Swipers .swiper-slide-active > div {transition:1s;opacity:1;}
 .Swipers .swiper-slide .visual_bg {position: absolute; top:0; left:0; width:100%; height:100%; opacity:1; z-index:1000;}
 
-.Swipers .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:auto; height:30px; transform:translateX(-50%); z-index:15;}
+.Swipers .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:fit-content; height:30px; transform:translateX(-50%); z-index:15;}
 .Swipers .swiper-btn {width:20px;height:20px;  z-index:10; cursor:pointer; position:relative;}
 .Swipers .swiper-btn {background-size:contain; background-position:center; background-repeat:no-repeat;}
 .Swipers .swiper-pagination {position:relative; margin-top:6px; margin-left:20px;} 
@@ -95,6 +96,9 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 .Swipers .swiper-button-btns i {font-size:20px; color:#fff;}
 
 /* index */
+#index .idx_swipers {display:none; width:100%; height:100%; overflow:hidden; position:relative;}
+#index .idx_swipers .swiper-view {height:100vh;}
+
 #index .idx_main {position:relative; width:100%; height:auto;}
 #index .idx_main .idx_hero_img {position:relative; z-index:1;}
 #index .idx_main .idx_hero_img .idx_img_group {position:relative; width:100%; height:auto; display:flex; align-items:flex-start; flex-flow:row wrap; justify-content:space-between;}
@@ -104,7 +108,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_main .idx_img_group .slideImg .slide_contents .slide_img > div {background-size:cover; width:100%; height:100%;}
 
 #index .idx_main .idx_img_group .slideImg.img1 {width:50%; height:100vh;}
-#index .idx_main .idx_img_group .slideImg.img2 {width:calc(50% - 220px); height:calc(50vh + 322px); margin-top:calc(50vh - 202px); padding-bottom:40px;}
+#index .idx_main .idx_img_group .slideImg.img2 {width:calc(50% - 220px); height:calc(50vh + 322px); margin-top:calc(50vh - 202px); padding-bottom:40px; position:relative;}
 #index .idx_main .idx_img_group .slideImg.img3 {width:calc(50% - 300px); height:calc(100vh - 200px);}
 #index .idx_main .idx_img_group .slideImg.img4 {width:calc(50% + 80px); height:calc(100vh - 160px); margin:100px 0 0 120px; padding-bottom:40px;}
 
@@ -115,7 +119,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_main .idx_img_group  .slide_btn .slide_btn_bullet:first-child {margin-left:0;}
 #index .idx_main .idx_img_group  .slide_btn .slide_btn_bullet2 {display:block; position: absolute; background-color:#fff; top:0; left:0; height:1px;}
 
-#index .idx_main_txt {position:absolute; width:430px; height:70px; top:200px; right:300px; overflow:hidden; z-index:15;}
+#index .idx_main_txt {position:absolute; width:430px; height:70px; top:-100px; left:0; overflow:hidden; z-index:15;}
 #index .idx_main_txt span {display: block; font-size:18px; margin-bottom:15px;}
 #index .idx_main_txt strong {display: block; font-size:35px; text-shadow:2px 2px 2px rgb(0 0 0 / 15%);}
 
@@ -208,6 +212,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #about .abt_map .abt_address h3 span {font-size:16px; margin-bottom:25px;}
 #about .abt_map .abt_address h3 span b {display:inline-block; font-weight:bold; margin-right:10px;}
 #about .abt_map .abt_screen  {width:100%; max-width:1200px; margin:0 auto; margin-top:-300px;}
+#about .abt_map .abt_screen_m {display:none;}
 
 /* rooms */
 #rooms {position:relative; width:100%; height:100%; }
@@ -281,7 +286,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #special .contents .Swiper .swiper-pagination {display:inline-block; width:auto;; z-index:3;}
 .swiper-pagination-bullet {display:inline-block; width:10px; height:10px; background-color:transparent; border-radius:50%; border:1px solid #fff;}
 .swiper-pagination-bullet-active {background-color:#fff; border: 2px solid #ccc0ac;  width:12px; height:12px; border-radius:50%; margin-bottom:-2px!important;}
-.Swiper .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:auto; height:30px; transform:translateX(-50%); z-index:15;}
+.Swiper .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:fit-content; height:30px; transform:translateX(-50%); z-index:15;}
 .Swiper .swiper-btn {width:20px;height:20px;  z-index:10; cursor:pointer; position:relative;}
 .Swiper .swiper-btn {background-size:contain; background-position:center; background-repeat:no-repeat;}
 .Swiper .swiper-pagination {position:relative; margin-top:6px; margin-left:20px;} 
@@ -335,7 +340,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #Banner .InBox .ttls strong                         {display:block;font-size:75px;margin:15px 0 0 15px;letter-spacing:3px;}
 
 /* table */
-.tables .contents .InnerBox {max-width:1400px;min-width:1000px;padding:3% 0 7%;margin:0 auto;}
+.tables .contents .InnerBox {max-width:1400px; padding:3% 0 7%;margin:0 auto;}
 .tables .contents .snb {width:500px;margin:0 auto;padding:15px 0;margin-bottom:5%;overflow:hidden;}
 .tables .contents .snb {border:1px solid #e8e8e8;border-right:none;border-left:none;}
 .tables .contents .snb li {float:left;width:50%;background:url(../images/pv_b.gif) no-repeat right center;}
@@ -355,7 +360,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 .tables .contents .stb li a {display:block;padding:12.5px 15px;width:100px;text-align:center;font-size:15px;}
 .tables .contents .stb li.active a {color:#fff;background:#41595e;}
 
-.tables .contents .frame {position:relative;max-width:1300px;min-width:800px;margin:0 auto;}
+.tables .contents .frame {position:relative;max-width:1300px; margin:0 auto;}
 .tables .contents .frame h3 {width:98%;margin:0 auto;font-size:35px;}
 .tables .contents .frame h3 strong {display:block;}
 .tables .contents .frame h3 span {display:block;font-size:15px;padding:15px 0;}
