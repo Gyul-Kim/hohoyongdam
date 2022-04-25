@@ -47,7 +47,7 @@ $("#top-btn").on("click", function() {
 // index_parallax - vertical
 function SwipersV1(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + '.img1 .swiper', {
-		paginationClickable: true,
+		paginationClickable: false,
 		slidesPerView:view,
 		centeredSlides: center,
 		spaceBetween: Between,
@@ -56,12 +56,17 @@ function SwipersV1(value, view, center, Between, boolean){
 		direction:'horizontal',
 		speed:1500,
 		autoplay: 3000,
+		touchRatio:0,
+		allowTouchMove: false,
+		// autoplay: {
+		// 	reverseDirection:true,
+		// }
 	});
 }
 
 function SwipersV2(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + '.img2 .swiper', {
-		paginationClickable: true,
+		paginationClickable: false,
 		slidesPerView:view,
 		centeredSlides: center,
 		spaceBetween: Between,
@@ -70,12 +75,17 @@ function SwipersV2(value, view, center, Between, boolean){
 		direction:'horizontal',
 		speed:1500,
 		autoplay:3000,
+		touchRatio:0,
+		allowTouchMove: false,
+		parallax: true,
+
+
 	});
 }
 
 function SwipersV3(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + '.img3 .swiper', {
-		paginationClickable: true,
+		paginationClickable: false,
 		slidesPerView:view,
 		centeredSlides: center,
 		spaceBetween: Between,
@@ -84,12 +94,17 @@ function SwipersV3(value, view, center, Between, boolean){
 		direction:'horizontal',
 		speed:1500,
 		autoplay:3000,
+		touchRatio:0,
+		allowTouchMove: false,
+		parallax: true,
+
+
 	});
 }
 
 function SwipersV4(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + '.img4 .swiper', {
-		paginationClickable: true,
+		paginationClickable: false,
 		slidesPerView:view,
 		centeredSlides: center,
 		spaceBetween: Between,
@@ -98,18 +113,30 @@ function SwipersV4(value, view, center, Between, boolean){
 		direction:'horizontal',
 		speed:1500,
 		autoplay:3000,
+		touchRatio:0,
+		allowTouchMove: false,
+		parallax: true,
+
+
 	});
 }
 
 function SwipersMobile(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + ' .swiper4', {
-		paginationClickable: true,
+		paginationClickable: false,
 		pagination: value + ' .swiper-pagination',
 
 		slidesPerView: 1,
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean,
+		touchRatio:0,
+		allowTouchMove: false,
+		parallax: true,
+		speed:1500,
+		autoplay:3000,
+
+
 	});
 }
 
@@ -125,15 +152,15 @@ switch(path) {
 			'<div class="slide_btn_bullet"><div class="slide_btn_bullet2"></div></div>' 
 		);
 
-		for(let i = 0; i < 4; i++) {
+		for(let i = 0; i < 8; i++) {
 			$(".idx_main .idx_swipers .swiper-container .swiper-image").append(
 				'<div class="swiper-slide">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (i + 4) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (i + 1) + '.jpg) no-repeat 50% 50%; background-size:cover; opacity:1;"></div>' +					
 				'</div>'
 			);
 		} SwipersMobile('.idx_swipers', "auto", true, 0, true);
 
-		for(let j = 0; j < 2; j++) {
+		for(let j = 0; j < 4; j++) {
 			$(".idx_main .img1 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
 					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
@@ -141,30 +168,31 @@ switch(path) {
 			);
 		} SwipersV1(`.idx_main .img1`, "auto", true, 0, true);
 
-		for(let j = 0; j < 2; j++) {
+		for(let j = 0; j < 4; j++) {
 			$(".idx_main .img2 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" data-swiper-autoplay="10000" style="background:url(' + url + '/main/' + (j + 3) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
+					'<div data-swiper-parallax-x="100%" data-swiper-autoplay="10000" style="background:url(' + url + '/main/' + (j + 5) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV2(`.idx_main .img2`, "auto", true, 0, true);
 
-		for(let j = 0; j < 2; j++) {
+		for(let j = 0; j < 4; j++) {
 			$(".idx_main .img3 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 5) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 9) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV3(`.idx_main .img3`, "auto", true, 0, true);
 
-		for(let j = 0; j < 2; j++) {
+		for(let j = 0; j < 4; j++) {
 			$(".idx_main .img4 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 7) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
+					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 13) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV4(`.idx_main .img4`, "auto", true, 0, true);
 
+		
 		
 
 		
@@ -210,7 +238,7 @@ switch(path) {
 
 					$("#index .idx_rooms_preview .swiper-image").append(
 						'<div class="swiper-slide">' + 
-							'<div style="background:url(' + url + '/room/' + (i + 1) + '/2.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/6.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 						'</div>'
 					);
 				} Swipers(".idx_rooms", "auto", true, 100, false, 0);
@@ -230,12 +258,49 @@ switch(path) {
 				$("#index .idx_special .spec_swiper .swiper-image").append(
 					'<div class="swiper-slide">' + 
 						'<a href="special.html#special0' + (i + 1) +'">' +
-							'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+							'<div style="background:url(' + url + '/special/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 							'<h5 class="special_title"><strong>' + specialList[i]["TITLE_EN"]  +' </strong><span>' + specialList[i]["CONTENT"]  + '</span></h5>' +
 						'</a>' +
 					'</div>'
 				);
 			} Swipers2(".idx_special", "auto", false, 40, true);
+		});
+
+		$(window).on("scroll", function() {
+			var thisTop = $(this).scrollTop();
+			var a = $("#index .idx_main").offset().top - $(window).height();
+			var b = $("#index .idx_rooms").offset().top - $(window).height();
+			var c = $("#index .idx_special").offset().top - $(window).height();
+			var d = $("#index .idx_vid").offset().top - $(window).height();
+
+			if(thisTop > a) {
+				$("#index .idx_hero_img img1 .swiper-slide").css({"transform":"translateY(-" + (thisTop - a) / 9.5 + "px)"});
+				$("#index .idx_hero_img img2 .swiper-slide").css({"transform":"translateY(-" + (thisTop - a) / 9.5 + "px)"});
+				$("#index .idx_hero_img img3 .swiper-slide").css({"transform":"translateY(-" + (thisTop - a) / 9.5 + "px)"});
+				$("#index .idx_hero_img img4 .swiper-slide").css({"transform":"translateY(-" + (thisTop - a) / 9.5 + "px)"});
+			} else {
+				$("#index .idx_hero_img img1 .swiper-slide").css({"transform":"translateY(0)"});
+				$("#index .idx_hero_img img2 .swiper-slide").css({"transform":"translateY(0)"});
+				$("#index .idx_hero_img img3 .swiper-slide").css({"transform":"translateY(0)"});
+				$("#index .idx_hero_img img4 .swiper-slide").css({"transform":"translateY(0)"});
+			}
+
+			if(thisTop > b) {
+				$("#index .vid_right .vid_img img").css({"transform":"translateY(" + (thisTop - b) / 7.5 + "px)"});
+			} else {
+				$("#index .vid_right .vid_img img").css({"transform":"translateY(0)"});
+			}
+
+			if(thisTop > c) {
+				$("#index .idx_special .spec_swiper .swiper-slide").css({"transform":"translateY(" + (thisTop - c) / 12.5 + "px)"});		
+			} else {
+				$("#index .idx_special .spec_swiper .swiper-slide").css({"transform":"translateY(0)"});
+			}    
+			if(thisTop > d) {
+				$("#index .idx_vid .vid_img img").css({"transform":"translateY(" + (thisTop - c) / 25.5 + "px)"});		
+			} else {
+				$("#index .idx_vid .vid_img img").css({"transform":"translateY(0)"});
+			}   
 		});
 		break;
 
@@ -244,7 +309,7 @@ switch(path) {
 		for(var i = 0; i < img[2].length; i++) {
 			$("#about .abt_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
-					'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+					'<div style="background:url(' + url + '/exterior/' + (i + 1) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 				'</div>'
 			);
 		} Swipers(".abt_visual", "auto", true, 0, false);
@@ -259,6 +324,33 @@ switch(path) {
 				$(".abt_address").append(
 					'<h3><strong>LOCATION</strong><span><b>Address.</b>' + NEW_USER_ADDR  + '</span><span><b>Tel.</b>' + USER_TEL1 + '</span></h3>'
 				);
+			});
+
+			$(window).on("scroll", function() {
+				var thisTop = $(this).scrollTop();
+				var a = $("#about .abt_visual").offset().top - $(window).height();
+				var b = $("#about .abt_vid").offset().top - $(window).height();
+				var c = $("#about .abt_map").offset().top - $(window).height();
+	
+				if(thisTop > a) {
+					$("#about .abt_visual .swiper-slide").css({"transform":"translateY(" + (thisTop - a) / 30.5 + "px)"});
+				} else {
+					$("#about .abt_visual .swiper-slide").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > b) {
+					$("#about .vid_right .vid_img img").css({"transform":"translateY(" + (thisTop - b) / 20.5 + "px)"});
+				} else {
+					$("#about .vid_right .vid_img img").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > c) {
+					$("#about .abt_screen").css({"transform":"translateY(-" + (thisTop - c) / 20.5 + "px)"});		
+					$("#about .abt_screen_m").css({"transform":"translateY(" + (thisTop - c) / 30.5 + "px)"});		
+				} else {
+					$("#about .abt_screen").css({"transform":"translateY(0)"});
+					$("#about .abt_screen_m").css({"transform":"translateY(0)"});
+				}      
 			});
 		break;
 
@@ -364,10 +456,38 @@ switch(path) {
 
 					$("#rooms .rooms_menu_preview .swiper-image").append(
 						'<div class="swiper-slide">' + 
-							'<div style="background:url(' + url + '/room/' + (i + 1) + '/2.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+							'<div style="background:url(' + url + '/room/' + (i + 1) + '/9.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 						'</div>'
 					);
 				} Swipers3(".rooms_menu_img", "auto", true, 100, false, 0);
+			});
+
+			$(window).on("scroll", function() {
+				var thisTop = $(this).scrollTop();
+				var a = $("#rooms .rooms_visual").offset().top - $(window).height();
+				var b = $("#rooms .rooms_vid").offset().top - $(window).height();
+				var c = $("#rooms .rooms_menu").offset().top - $(window).height();
+	
+				if(thisTop > a) {
+					$("#rooms .rooms_visual .swiper-slide").css({"transform":"translateY(" + (thisTop - a) / 30.5 + "px)"});
+				} else {
+					$("#rooms .rooms_visual .swiper-slide").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > b) {
+					$("#rooms .vid_right .vid_img img").css({"transform":"translateY(" + (thisTop - b) / 20.5 + "px)"});
+				} else {
+					$("#rooms .vid_right .vid_img img").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > c) {
+					$("#rooms .rooms_menu .swiper-slide").css({"transform":"translateY(" + (thisTop - c) / 20.5 + "px)"});
+					$("#rooms .rooms_menu .title .rooms_menu_preview .swiper-slide").css({"transform":"translateY(-" + (thisTop - c) / 40.5 + "px)"});
+					
+				} else {
+					$("#rooms .rooms_menu .swiper-slide").css({"transform":"translateY(0)"});
+					$("#rooms .rooms_menu .title .rooms_menu_preview .swiper-slide").css({"transform":"translateY(0)"});
+				}      
 			});
 
 		break;
@@ -425,11 +545,43 @@ switch(path) {
 				for(let j = 0; j < img[3][i]; j++) {
 					$("#special .Swiper").eq(i).find(".swiper-image").append(
 						'<div class="swiper-slide">' +
-							`<div style="background-image:url(${url}/room/${i+1}/${j+1}.jpg)"></div>` +
+							`<div style="background-image:url(${url}/special/${i+1}/${j+1}.jpg)"></div>` +
 						'</div>'
 					);
 				} Swipers(`#special .special${i + 1}`, "auto", true, 0, true);
 			}
+
+			$(window).on("scroll", function() {
+				var thisTop = $(this).scrollTop();
+				var a = $("#special .special1").offset().top - $(window).height();
+				var b = $("#special .special2").offset().top - $(window).height();
+				var c = $("#special .special3").offset().top - $(window).height();
+				var d = $("#special .special4").offset().top - $(window).height();
+	
+				if(thisTop > a) {
+					$(".special1 .swiper-slide").css({"transform":"translateY(" + (thisTop - a) / 7.5 + "px)"});
+				} else {
+					$(".special1 .swiper-slide").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > b) {
+					$(".special2 .swiper-slide").css({"transform":"translateY(" + (thisTop - b) / 7.5 + "px)"});
+				} else {
+					$(".special2 .swiper-slide").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > c) {
+					$(".special3 .swiper-slide").css({"transform":"translateY(" + (thisTop - c) / 7.5 + "px)"});
+				} else {
+					$(".special3 .swiper-slide").css({"transform":"translateY(0)"});
+				}
+	
+				if(thisTop > d) {
+					$(".special4 .swiper-slide").css({"transform":"translateY(" + (thisTop - d) / 7.5 + "px)"});
+				} else {
+					$(".special4 .swiper-slide").css({"transform":"translateY(0)"});
+				}        
+			});
 
 			const currentUrl2 = new URL(window.location.href);
 				if( currentUrl2.hash.length ) {
@@ -437,6 +589,8 @@ switch(path) {
 				scrollTop:$(currentUrl2.hash).offset().top
 				},2000);
 			}
+
+
 		});			
 		break;
 

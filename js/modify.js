@@ -3,22 +3,26 @@ $(document).bind("contextmenu",function(e){return false;});
 $(document).bind("ondragstart",function(e){return false;});
 $(document).bind("onselectstart",function(e){return false;}); 
 
+const isMobile = () => { 
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+  };
+  
+
 /* 실시간예약 - 계정정보 */
 let account = "hohoyongdam";
 
-let url = "http://gonylab8.speedgabia.com/hohoyongdam/temp"
+const url =  isMobile() && window.innerWidth <=768 ? 'http://gonylab8.speedgabia.com/hohoyongdam/m/' : 'http://gonylab8.speedgabia.com/hohoyongdam/';
+
 
 let img = [
 	//index
-	[13],
+	[16],
 	//exterior 
-	[9],
+	[3],
 	//room
-	[8, 8, 8, 8, 8, 8],
+	[12, 13, 13, 12, 13, 12],
 	//special
-	[9,3,5,6],
-	// cafe
-	[5],
+	[6,5,5,3],
 
 ]
 
