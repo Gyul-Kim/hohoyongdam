@@ -9,10 +9,10 @@ document.write(
 $(function(){
     /*---------------------------------------------------------------*/	
     //variable
-    let video = document.getElementById("MyVideo");
-    let path = (location.href.substr(location.href.lastIndexOf("/") + 1)).split(".")[0]; 	//path
-    let split = (location.href.substr(location.href.lastIndexOf("/") + 1)).split("&idx")[1]; //split
-    let detailPath = ((location.href.substr(location.href.lastIndexOf("=") + 1)).slice(0, 2) - 1 + 1) - 1; //detail Path
+    const video = document.getElementById("MyVideo");
+    const path = (location.href.substr(location.href.lastIndexOf("/") + 1)).split(".")[0]; 	//path
+    const split = (location.href.substr(location.href.lastIndexOf("/") + 1)).split("&idx")[1]; //split
+    const detailPath = ((location.href.substr(location.href.lastIndexOf("=") + 1)).slice(0, 2) - 1 + 1) - 1; //detail Path
 
 // header
 $("header .header_sub > div").hover(function(){
@@ -55,14 +55,17 @@ function SwipersV1(value, view, center, Between, boolean){
 		touchRatio:false,
 		direction:'horizontal',
 		speed:1500,
-		autoplay: 3000,
 		touchRatio:0,
 		allowTouchMove: false,
-		// autoplay: {
-		// 	reverseDirection:true,
-		// }
+		parallax: true,
+		autoplay:{
+			delay:3000,
+			reverseDirection: true,
+		}
 	});
 }
+
+
 
 function SwipersV2(value, view, center, Between, boolean){
 	var swiper = new Swiper(value + '.img2 .swiper', {
@@ -74,10 +77,14 @@ function SwipersV2(value, view, center, Between, boolean){
 		touchRatio:false,
 		direction:'horizontal',
 		speed:1500,
-		autoplay:3000,
 		touchRatio:0,
 		allowTouchMove: false,
 		parallax: true,
+		autoplay:{
+			delay:3000,
+			reverseDirection: true,
+
+		}
 
 
 	});
@@ -93,10 +100,14 @@ function SwipersV3(value, view, center, Between, boolean){
 		touchRatio:false,
 		direction:'horizontal',
 		speed:1500,
-		autoplay:3000,
 		touchRatio:0,
 		allowTouchMove: false,
 		parallax: true,
+		autoplay:{
+			delay:3000,
+			reverseDirection: true,
+
+		}
 
 
 	});
@@ -112,12 +123,14 @@ function SwipersV4(value, view, center, Between, boolean){
 		touchRatio:false,
 		direction:'horizontal',
 		speed:1500,
-		autoplay:3000,
 		touchRatio:0,
 		allowTouchMove: false,
 		parallax: true,
+		autoplay:{
+			delay:3000,
+			reverseDirection: true,
 
-
+		}
 	});
 }
 
@@ -134,8 +147,11 @@ function SwipersMobile(value, view, center, Between, boolean){
 		allowTouchMove: false,
 		parallax: true,
 		speed:1500,
-		autoplay:3000,
+		autoplay:{
+			delay:3000,
+			reverseDirection: true,
 
+		}
 
 	});
 }
@@ -163,7 +179,7 @@ switch(path) {
 		for(let j = 0; j < 4; j++) {
 			$(".idx_main .img1 .slide_contents .swiper-image").append(
 				'<div class="swiper-slide slide_img">' +
-					'<div data-swiper-parallax-x="100%" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
+					'<div data-swiper-parallax-x="100%"" style="background:url(' + url + '/main/' + (j + 1) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' +					
 				'</div>'
 			);
 		} SwipersV1(`.idx_main .img1`, "auto", true, 0, true);
@@ -230,10 +246,18 @@ switch(path) {
 						'</div>'
 					);
 
-					$(".idx_rooms_img .title .txt").append(
-						'<div class="intro' + (i + 1) +'">' +
-						'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
-						'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>'
+					// $(".idx_rooms_img .title .txt").append(
+					// 	'<div class="intro' + (i + 1) +'">' +
+					// 	'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
+					// 	'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>'
+					// );
+
+					$(".idx_rooms_img .title .txt .swiper-image").append(
+						'<div class="swiper-slide">' + 
+							'<div class="intro' + (i + 1) +'">' +
+							'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
+							'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>' +
+						'</div>'
 					);
 
 					$("#index .idx_rooms_preview .swiper-image").append(
@@ -241,7 +265,7 @@ switch(path) {
 							'<div style="background:url(' + url + '/room/' + (i + 1) + '/6.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 						'</div>'
 					);
-				} Swipers(".idx_rooms", "auto", true, 100, false, 0);
+				} Swipers3(".idx_rooms", "auto", true, 100, false, 0);
 		});
 
 		// ability 
@@ -263,7 +287,7 @@ switch(path) {
 						'</a>' +
 					'</div>'
 				);
-			} Swipers2(".idx_special", "auto", false, 40, true);
+			} Swipers2(".idx_special", 3.5 , false, 40, true);
 		});
 
 		$(window).on("scroll", function() {
@@ -292,9 +316,9 @@ switch(path) {
 			}
 
 			if(thisTop > c) {
-				$("#index .idx_special .spec_swiper .swiper-slide").css({"transform":"translateY(" + (thisTop - c) / 12.5 + "px)"});		
+				$("#index .idx_special .spec_swiper .swiper-slide div").css({"transform":"translateY(" + (thisTop - c) / 12.5 + "px)"});		
 			} else {
-				$("#index .idx_special .spec_swiper .swiper-slide").css({"transform":"translateY(0)"});
+				$("#index .idx_special .spec_swiper .swiper-slide div").css({"transform":"translateY(0)"});
 			}    
 			if(thisTop > d) {
 				$("#index .idx_vid .vid_img img").css({"transform":"translateY(" + (thisTop - c) / 25.5 + "px)"});		
@@ -306,13 +330,13 @@ switch(path) {
 
 	case 'about' :
 		videoControl(video);
-		for(var i = 0; i < img[2].length; i++) {
+		for(var i = 0; i < img[1][0]; i++) {
 			$("#about .abt_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
 					'<div style="background:url(' + url + '/exterior/' + (i + 1) + '.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 				'</div>'
 			);
-		} Swipers(".abt_visual", "auto", true, 0, false);
+		} Swipers(".abt_visual", "auto", true, 0, false, 1);
 
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/4',
 			function(data){
@@ -338,19 +362,19 @@ switch(path) {
 					$("#about .abt_visual .swiper-slide").css({"transform":"translateY(0)"});
 				}
 	
-				if(thisTop > b) {
-					$("#about .vid_right .vid_img img").css({"transform":"translateY(" + (thisTop - b) / 20.5 + "px)"});
-				} else {
-					$("#about .vid_right .vid_img img").css({"transform":"translateY(0)"});
-				}
+				// if(thisTop > b) {
+				// 	$("#about .vid_right .vid_img img").css({"transform":"translateY(" + (thisTop - b) / 20.5 + "px)"});
+				// } else {
+				// 	$("#about .vid_right .vid_img img").css({"transform":"translateY(0)"});
+				// }
 	
-				if(thisTop > c) {
-					$("#about .abt_screen").css({"transform":"translateY(-" + (thisTop - c) / 20.5 + "px)"});		
-					$("#about .abt_screen_m").css({"transform":"translateY(" + (thisTop - c) / 30.5 + "px)"});		
-				} else {
-					$("#about .abt_screen").css({"transform":"translateY(0)"});
-					$("#about .abt_screen_m").css({"transform":"translateY(0)"});
-				}      
+				// if(thisTop > c) {
+				// 	$("#about .abt_screen").css({"transform":"translateY(-" + (thisTop - c) / 20.5 + "px)"});		
+				// 	$("#about .abt_screen_m").css({"transform":"translateY(" + (thisTop - c) / 30.5 + "px)"});		
+				// } else {
+				// 	$("#about .abt_screen").css({"transform":"translateY(0)"});
+				// 	$("#about .abt_screen_m").css({"transform":"translateY(0)"});
+				// }      
 			});
 		break;
 
@@ -430,13 +454,13 @@ switch(path) {
 			// $(".eq li").eq(INTERIOR.length - 1).text(last);
 		});
 
-		for(var i = 0; i < img[2].length; i++) {
+		for(var i = 0; i < img[2][detailPath]; i++) {
 			$("#rooms .rooms_visual .swiper-image").append(
 				'<div class="swiper-slide">' + 
-					'<div style="background:url(' + url + '/room/' + (i + 1) + '/1.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
+					'<div style="background:url(' + url + '/room/' + (detailPath + 1) + '/' + (i + 1) +'.jpg) no-repeat 50% 50%; background-size:cover;"></div>' + 	
 				'</div>'
 			);
-		} Swipers(".rooms_visual", "auto", true, 0, false);
+		} Swipers(".rooms_visual", "auto", true, 0, false, 1);
 
 		// accommodation menu
 		$.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/8', 
@@ -448,10 +472,12 @@ switch(path) {
 						'</div>'
 					);
 
-					$("#rooms .title .txt").append(
-						'<div class="intro' + (i + 1) +'">' +
-						'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
-						'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>'
+					$("#rooms .title .txt .swiper-image").append(
+						'<div class="swiper-slide">' + 
+							'<div class="intro' + (i + 1) +'">' +
+							'<p>' + rooms_txt[i][0].replace(/\n/g, "<br />") + '</p>' +
+							'<a href="rooms.html?num=' + (i + 1) +'">Detail View</a></div>' +
+						'</div>'
 					);
 
 					$("#rooms .rooms_menu_preview .swiper-image").append(
@@ -480,14 +506,14 @@ switch(path) {
 					$("#rooms .vid_right .vid_img img").css({"transform":"translateY(0)"});
 				}
 	
-				if(thisTop > c) {
-					$("#rooms .rooms_menu .swiper-slide").css({"transform":"translateY(" + (thisTop - c) / 20.5 + "px)"});
-					$("#rooms .rooms_menu .title .rooms_menu_preview .swiper-slide").css({"transform":"translateY(-" + (thisTop - c) / 40.5 + "px)"});
+				// if(thisTop > c) {
+				// 	$("#rooms .rooms_menu .swiper-slide").css({"transform":"translateY(" + (thisTop - c) / 20.5 + "px)"});
+				// 	$("#rooms .rooms_menu .title .rooms_menu_preview .swiper-slide").css({"transform":"translateY(-" + (thisTop - c) / 40.5 + "px)"});
 					
-				} else {
-					$("#rooms .rooms_menu .swiper-slide").css({"transform":"translateY(0)"});
-					$("#rooms .rooms_menu .title .rooms_menu_preview .swiper-slide").css({"transform":"translateY(0)"});
-				}      
+				// } else {
+				// 	$("#rooms .rooms_menu .swiper-slide").css({"transform":"translateY(0)"});
+				// 	$("#rooms .rooms_menu .title .rooms_menu_preview .swiper-slide").css({"transform":"translateY(0)"});
+				// }      
 			});
 
 		break;
@@ -548,7 +574,7 @@ switch(path) {
 							`<div style="background-image:url(${url}/special/${i+1}/${j+1}.jpg)"></div>` +
 						'</div>'
 					);
-				} Swipers(`#special .special${i + 1}`, "auto", true, 0, true);
+				} Swipers(`#special .special${i + 1}`, "auto", true, 0, true, 1);
 			}
 
 			$(window).on("scroll", function() {
@@ -729,44 +755,60 @@ function numbering(n) { // 이미지 넘버링 10 보다 작을때
 
 //function - swipers
 function Swipers3(value, view, center, Between, boolean, touch){
-	var swiper = new Swiper(value + ' .swiper3', {
+	let swiper = new Swiper(value + ' .swiper3', {
 		effect :'fade',
-		paginationClickable: true,
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		pagination: '.swiper3 .swiper-pagination',
+		pagination: {
+			el: value + ' .swiper-pagination',
+			clickable : true,
+		  },
+		  navigation: {
+			nextEl: value + ' .swiper-button-next',
+			prevEl: value + ' .swiper-button-prev',
+		  },
 		slidesPerView: view,
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean,
 		touchRatio:touch,
 
-		onSlideChangeStart: function (swiper) {
-			// let curr = swiper.activeIndex + 1;
-			let curr = swiper.activeIndex + 1;
+		// onSlideChangeStart: function (swiper) {
+		// 	let curr = swiper.activeIndex + 1;
+		// 	// let curr = getSlideDataIndex(swiper) + 1;
 
-			$('#rooms .rooms_menu_img .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
-			$('#rooms .rooms_menu_img .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
+		// 	$('#index .idx_rooms .idx_rooms_img .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
+		// 	$('#index .idx_rooms .idx_rooms_img .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
 
-			// $('#index .specials .text>div').css({'opacity': '0', 'visibility': 'hidden', 'transform': 'translateY(0)'});
-			// $('#index .specials .text>div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible', 'transform': 'translateY(-10px)'});
+		// 	// $('#rooms .rooms_menu_img .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
+		// 	// $('#rooms .rooms_menu_img .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
 
-		},
+		// 	// $('#index .specials .text>div').css({'opacity': '0', 'visibility': 'hidden', 'transform': 'translateY(0)'});
+		// 	// $('#index .specials .text>div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible', 'transform': 'translateY(-10px)'});
+		// }
 	});
-}
+	$("#index .idx_acc .swiper3 .swiper-btn").click(function() {
+		$('#index .idx_rooms .idx_rooms_img .title .txt > div').addClass('active');
+	}, function(){
+		$('#index .idx_rooms .idx_rooms_img .title .txt > div').removeClass('active');
+	});
+}	
 
 // idx special
-function Swipers2(value, view, center, Between, boolean){
+function Swipers2(value, view, center, Between, touch){
 	var swiper = new Swiper(value + ' .swiper2', {
-		paginationClickable: true,
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 4,
-		centeredSlides: center,
+		  navigation: {
+			nextEl: value + ' .swiper-button-next',
+			prevEl: value + ' .swiper-button-prev',
+		  },
+		direction: 'horizontal',
+		slidesPerView: view,		
 		spaceBetween: Between,
-		loop: boolean,
+		loop: true,
+		touchRatio:touch,
 		breakpoints: {
 			1000: {
+				slidesPerView: 3.5,
+			},
+			300:{
 				slidesPerView: 1.5,
 			}
 		}
@@ -775,22 +817,19 @@ function Swipers2(value, view, center, Between, boolean){
 
 function Swipers(value, view, center, Between, boolean,touch){
 	let swiper = new Swiper(value + ' .swiper', {
-		paginationClickable: true,
-		nextButton: value + ' .swiper-button-next',
-		prevButton: value + ' .swiper-button-prev',
-		pagination: value + ' .swiper-pagination',
+		pagination: {
+			el: value + ' .swiper-pagination',
+			clickable : true,
+		  },
+		  navigation: {
+			nextEl: value + ' .swiper-button-next',
+			prevEl: value + ' .swiper-button-prev',
+		  },
 		slidesPerView: view,
 		centeredSlides: center,
 		spaceBetween: Between,
 		loop: boolean,
 		touchRatio:touch,
-		onSlideChangeStart: function (swiper) {
-			// let curr = swiper.activeIndex + 1;
-			let curr = swiper.activeIndex + 1;
-			
-			$('#index .idx_rooms .title .txt > div').css({'opacity': '0', 'visibility': 'hidden'});
-			$('#index .idx_rooms .title .txt > div:nth-child(' + curr + ')').css({'opacity': '1', 'visibility': 'visible'});
-		},
 	});
 }
 

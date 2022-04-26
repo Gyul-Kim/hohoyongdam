@@ -131,9 +131,9 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_rooms .title span, .idx_rooms .title strong, .idx_rooms .title strong, .idx_rooms .title p {display:block;}
 #index .idx_rooms .title strong {font-size:30px; margin-bottom:20px;  }
 #index .idx_rooms .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
-#index .idx_rooms .title .txt {position:absolute; top:150px; left:0; width:450px; height:250px;}
-#index .idx_rooms .title .txt div {visibility:hidden; opacity:0; transition:0.5s; position:absolute; top:0; left:0;}
-#index .idx_rooms .title .txt div:first-of-type {visibility:visible; opacity:1; transition:0.5s;}
+#index .idx_rooms .title .txt .swiper-slide {position:absolute; top:30px; left:0; width:450px; height:250px;}
+#index .idx_rooms .title .txt .swiper-slide div { transition:0.5s; position:absolute; top:0; left:0; opacity:0;}
+#index .idx_rooms .title .txt .swiper-slide-active div{opacity:1;}
 #index .idx_rooms .title .txt p {font-size:14px; color:#222; line-height:1.75;}
 #index .idx_rooms .title .txt p > span:first-child {margin-bottom:30px;}
 #index .idx_rooms .title .txt a {display:inline-block; font-size:16.5px; margin-top:70px; border-top:1px solid rgba(0,0,0,.1); color:#000; line-height:24px; padding:10px 50px 0 0; position: relative; text-decoration:none;}
@@ -161,11 +161,11 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a div {width:100%; height:600px;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a h5::before {content:""; background-color:#444; display:block; position:absolute; width:100%; height:4px; left:0; top:0; transform:scaleX(0); transform-origin:left center; transition:transform .5s cubic-bezier(.19,1,.22,1);}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide > a:hover h5::before {transform:scaleX(1); transform:right center;}
-#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 {position:relative; padding:20px 50px 0 0;}
+#index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 {position:relative; padding:20px 50px 0 0; background-color:#fff;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 strong {display:block; font-size:20px; color:#000; margin:10px 0 20px;}
 #index .idx_special .Swipers .swiper-view .swiper-image .swiper-slide h5 span {display:block; font-size:15px; color:#333; line-height:1.5;}
 
-#index .idx_special .Swipers .swiper-button-next {position:absolute; width:55px; height:55px; right:25%; background-image:url(../images/next.png);}
+#index .idx_special .Swipers .swiper-button-next {position:absolute; width:55px; height:55px; right:14%; background-image:url(../images/next.png);}
 #index .idx_special .Swipers .swiper-button-prev {position:absolute; width:55px; height:55px; left:0; background-image:url(../images/prev.png);}
 
 #index .idx_vid {position:relative; display:flex; margin:200px auto 0; max-width:1950px; padding:100px 0;}
@@ -251,9 +251,9 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_menu .title span, .rooms_menu .title strong, .rooms_menu  .title p {display:block;}
 #rooms .rooms_menu .title strong {font-size:30px; margin-bottom:20px;  }
 #rooms .rooms_menu .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
-#rooms .rooms_menu .title .txt {position:absolute; top:150px; left:0; width:450px; height:250px;}
-#rooms .rooms_menu .title .txt div {visibility:hidden; opacity:0; transition:0.5s; position:absolute; top:0; left:0;}
-#rooms .rooms_menu .title .txt div:first-of-type {visibility:visible; opacity:1; transition:0.5s;}
+#rooms .rooms_menu .title .txt .swiper-slide {position:absolute; top:30px; left:0; width:450px; height:250px;}
+#rooms .rooms_menu .title .txt .swiper-slide div { transition:0.5s; position:absolute; top:0; left:0; opacity:0;}
+#rooms .rooms_menu .title .txt .swiper-slide-active div{opacity:1;}
 #rooms .rooms_menu .title .txt p {font-size:15px; color:#222; line-height:1.75;}
 #rooms .rooms_menu .title .txt p > span:first-child {margin-bottom:30px;}
 #rooms .rooms_menu .title .txt a {display:inline-block; font-size:16.5px; margin-top:70px; border-top:1px solid rgba(0,0,0,.1); color:#000; line-height:24px; padding:10px 50px 0 0; position: relative; text-decoration:none;}
@@ -261,6 +261,8 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_menu .title .txt a::after {content:""; width:31px; height:6px; display:block; position:absolute; top:19px; right:0; background:url(../images/arrow_bk.png) no-repeat 100% 100%; background-size:120px;}
 #rooms .rooms_menu .title .txt a:hover::before {transform:scaleX(1); transform:right center;}
 #rooms .rooms_menu .title .txt a:hover::after {animation:arrow_hover 1s cubic-bezier(.19,1,.22,1) 0s infinite; margin-right:2px; transition:0.5s;}
+
+
 
 #rooms .rooms_menu .rooms_menu_swiper {width:calc(50% + 210px); position:absolute; top:100px; right:0; overflow:hidden; justify-content:flex-start; flex-basis:calc(50% + 210px); flex:0 1 calc(50% + 210px); flex-flow:column nowrap;}
 #rooms .rooms_menu .rooms_menu_swiper .swiper-view {height:610px;}
@@ -284,7 +286,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #special .contents .Swiper .swiper-slide > div {width:100%;height:100%;}
 #special .contents .Swiper .swiper-slide > div {background-position:50% 50%;background-repeat:no-repeat;background-size:cover;}	
 #special .contents .Swiper .swiper-pagination {display:inline-block; width:auto;; z-index:3;}
-.swiper-pagination-bullet {display:inline-block; width:10px; height:10px; background-color:transparent; border-radius:50%; border:1px solid #fff;}
+.swiper-pagination-bullet {display:inline-block; width:10px; height:10px; background-color:transparent; border-radius:50%; border:1px solid #fff; margin:0 2.5px;}
 .swiper-pagination-bullet-active {background-color:#fff; border: 2px solid #ccc0ac;  width:12px; height:12px; border-radius:50%; margin-bottom:-2px!important;}
 .Swiper .swiper-button-btns {position:absolute; display:flex; left:50%; bottom:10px; width:fit-content; height:30px; transform:translateX(-50%); z-index:15;}
 .Swiper .swiper-btn {width:20px;height:20px;  z-index:10; cursor:pointer; position:relative;}
@@ -333,7 +335,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #Banner                                             {background-repeat:no-repeat;background-position:50% 50%;background-size:cover;}
 #Banner:before                                      {position:absolute;top:0;left:0;width:100%;height:100%;content:"";display:block;opacity:0.5;background:#000;z-index:1;}
 #Banner .InBox                                      {position:relative;width:100%;height:100%;overflow:hidden;}
-#Banner .InBox .ttls                                {position:absolute;top:50%;left:5%;height:110px;margin-top:-55.5px;color:#fff;z-index:1;}
+#Banner .InBox .ttls                                {position:absolute;top:55%;left:5%;height:110px;margin-top:-55.5px;color:#fff;z-index:1;}
 #Banner .InBox .ttls div                            {display:inline-block;width:100px;border-top:1px solid #fff;padding-top:7px;margin-right:15px;}
 #Banner .InBox .ttls span                           {font-family:'linotype-didot';font-size:25px;}
 #Banner .InBox .ttls span b                         {font-family:'linotype-didot';}
@@ -353,7 +355,7 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 .tables .notice a {display:block;padding:20px 0;margin:15px auto;width:200px;font-weight:bold;}
 .tables .notice a:hover {color:#787878;}
 
-.tables .contents .bd_menu {position:relative;max-width:1300px;min-width:800px;margin:0 auto;}
+.tables .contents .bd_menu {position:relative;max-width:1300px; margin:0 auto;}
 .tables .contents .stb {position:absolute;top:110px;left:15px;overflow:hidden;z-index:100;}
 .tables .contents .stb li {float:left;margin:0 5px;border:1px solid #e8e8e8;}
 .tables .contents .stb li:last-child {background:none;}

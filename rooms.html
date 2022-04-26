@@ -22,7 +22,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
-<script src="js/swiper.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
 <script src="js/modify.js" defer></script>
 <script src="js/common.js" defer></script>
 </head>
@@ -69,7 +69,7 @@
                     이국의 로망 속에서 오롯이 스며들어 보시기 바랍니다 </span>
                 </P>
             </div>
-            <div class="vid_img"><img src="http://gonylab8.speedgabia.com/hohoyongdam/temp/main/10.jpg" alt="" width="100%" height="100%"></div>
+            <div class="vid_img"><div style="background:url(http://gonylab8.speedgabia.com/hohoyongdam/main/10.jpg) no-repeat 50% 50%; background-size:cover; width:100%; height:100%;" alt=""></div></div>
             </div>
         </div>
 
@@ -78,7 +78,13 @@
                <div class="title">
                   <strong>용담의 객실</strong>
                   <span>ACCOMMODATION</span>
-                  <div class="txt"></div>   
+                  <div class="txt">
+                    <div class="swiper-view">
+                        <div class="swiper-container swiper3">
+                           <div class="swiper-wrapper swiper-image"></div>
+                        </div>
+                    </div>
+                  </div>   
                   <div class="rooms_menu_preview Swipers">
                      <div class="swiper-view">
                         <div class="swiper-container swiper3">
@@ -93,10 +99,10 @@
                      <div class="swiper-container swiper3">
                         <div class="swiper-wrapper swiper-image"></div>
                         <div class="swiper-button-btns">
-                            <div class="swiper-button-prev swiper-btn menu"><i class="xi-angle-left"></i></div>
+                            <div class="swiper-btn swiper-button-prev swiper-btn menu"><i class="xi-angle-left"></i></div>
                             <div class="swiper-button-line"><i>｜</i></div>
-                            <div class="swiper-button-next swiper-btn menu"><i class="xi-angle-right"></i></div>
-                            <div class="swiper-pagination three"></div>
+                            <div class="swiper-btn swiper-button-next swiper-btn menu"><i class="xi-angle-right"></i></div>
+                            <div class="swiper-pagination"></div>
                          </div>
                      </div>
                  </div>
