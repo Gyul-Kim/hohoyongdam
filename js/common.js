@@ -684,7 +684,7 @@ $.getJSON('http://digitalnow.co.kr/reserve/pensionInfo/'+ account +'/4',	//User 
 				'<div class="ft_top">' +
 					'<div class="footerWrap">' +
 						'<div class="ft_txt">HOHO YONGDAM</div>' +
-						'<div class="ft_logo_m"><a href="index.html"><img src="images/ft_logo.png" width="100%" height="auto"></a></div>' +
+						'<div class="ft_logo_m"><a href="index.html"><img src="images/ft_logo.svg" width="100%" height="auto"></a></div>' +
 						'<ul class="ft_menu">' +
 							'<li><a href="about.html">HOHO YONGDAM</a></li>' +
 							'<li><a href="rooms.html?num=01">ACCOMMODATION</a></li>' +
