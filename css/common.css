@@ -123,11 +123,11 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #index .idx_main_txt span {display: block; font-size:18px; margin-bottom:15px;}
 #index .idx_main_txt strong {display: block; font-size:35px;  }
 
-#index .idx_rooms {margin-top:180px; height:800px; padding:100px 0; position: relative;}
+#index .idx_rooms {margin-top:180px; height:900px; padding:100px 0; position: relative;}
 #index .idx_rooms::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
 #index .idx_rooms .idx_rooms_img {position: relative; width:85%; height:auto; max-width:1950px; margin: 0 auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
 #index .idx_rooms .idx_accommodation {display:flex; width:100%; height:auto;}
-#index .idx_rooms .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:700px; width:calc(50% - 210px);}
+#index .idx_rooms .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:800px; width:calc(50% - 210px);}
 #index .idx_rooms .title span, .idx_rooms .title strong, .idx_rooms .title strong, .idx_rooms .title p {display:block;}
 #index .idx_rooms .title strong {font-size:30px; margin-bottom:20px;  }
 #index .idx_rooms .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
@@ -201,18 +201,17 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #about .abt_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px;  }
 #about .abt_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
 #about .abt_vid .vid_right .vid_txt p {font-size:15px; color:#111; line-height:1.75;}
-#about .abt_vid .vid_right .vid_txt p span:first-child {margin-bottom:30px;}
+#about .abt_vid .vid_right .vid_txt p span  {margin-bottom:10px;}
 #about .abt_vid .vid_right .vid_img {display:block; width:550px; height:366px;}
 
 #about .abt_map {width:100%; height:100%; overflow:hidden; z-index:1; position: relative; padding:0 0 250px;}
-#about .abt_map .abt_address {width:50%; height:600px; position:relative; background-color:#f3f2e6;}
+#about .abt_map .abt_address {width:50%; height:600px; position:relative; background-color:#f3f2e6; z-index:-1;}
 #about .abt_map .abt_address h3 strong, .abt_address h3 span {display:block;}
 #about .abt_map .abt_address h3 {position:absolute; width:500px; top:20%; left:50%; transform:translateX(-50%);}
 #about .abt_map .abt_address h3 strong {font-size:30px; margin-bottom:50px;  }
 #about .abt_map .abt_address h3 span {font-size:16px; margin-bottom:25px;}
 #about .abt_map .abt_address h3 span b {display:inline-block; font-weight:bold; margin-right:10px;}
 #about .abt_map .abt_screen  {width:100%; max-width:1200px; margin:0 auto; margin-top:-300px;}
-#about .abt_map .abt_screen_m {display:none;}
 
 /* rooms */
 #rooms {position:relative; width:100%; height:100%; }
@@ -241,13 +240,13 @@ footer .copyright {display:block; text-align:center; padding:15px 0;}
 #rooms .rooms_vid .vid_right .vid_txt h3 strong {display:block; font-size:30px; margin-bottom:20px;}
 #rooms .rooms_vid .vid_right .vid_txt h3 > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;  }
 #rooms .rooms_vid .vid_right .vid_txt p {font-size:15px; color:#111; line-height:1.75;}
-#rooms .rooms_vid .vid_right .vid_txt p span:first-child {margin-bottom:30px;}
+#rooms .rooms_vid .vid_right .vid_txt p span{margin-bottom:10px;}
 #rooms .rooms_vid .vid_right .vid_img {display:block; width:550px; height:366px;}
 
-#rooms .rooms_menu {height:800px; top:170px; position: relative; max-width:1920px; margin:0 auto 300px;}
+#rooms .rooms_menu {height:900px; top:170px; position: relative; max-width:1920px; margin:0 auto 300px;}
 #rooms .rooms_menu::before {content:""; display:block; width:calc(100% - 220px); background-color:#f3f2e6; height:100%; position:absolute; top:0; left:0; z-index:-1;}
 #rooms .rooms_menu .rooms_menu_img {position: relative; width:85%; height:auto; margin-left:auto; margin-right:0; flex-flow:row nowrap; justify-content:space-between; align-items:flex-start;}
-#rooms .rooms_menu .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px); height:700px; position:relative;}
+#rooms .rooms_menu .title {padding:50px 40px 0 0; order:1; flex:0 1 calc(50% - 210px); flex-basis:calc(50% - 210px); height:auto; width:calc(50% - 210px); height:800px; position:relative;}
 #rooms .rooms_menu .title span, .rooms_menu .title strong, .rooms_menu  .title p {display:block;}
 #rooms .rooms_menu .title strong {font-size:30px; margin-bottom:20px;  }
 #rooms .rooms_menu .title > span {font-size:15px; color:#8b8b8b; margin-bottom:20px;}
